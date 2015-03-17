@@ -1,0 +1,17 @@
+{
+  "name": "pebble-timeline-client",
+  "version": "0.0.1",
+  "keywords": [
+    "pebble",
+    "timeline"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "dependencies": {
+    "request": "~2.53.0",
+    "yargs": "3.5.4"
+  },
+  "license": "MIT"
+}
