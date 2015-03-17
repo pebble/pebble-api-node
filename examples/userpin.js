@@ -2,9 +2,6 @@ var Timeline = require('../index');
 
 var timeline = new Timeline;
 
-// set the user key
-timeline.setUserKey('TIMELINETEST_USER1');
-
 // create a new pin
 var pin1 = new Timeline.Pin();
 
@@ -63,4 +60,4 @@ pin1.addAction(new Timeline.Pin.Action({
 console.log(pin1);
 
 // send the pin
-timeline.sendUserPin(pin1);
+timeline.sendUserPin('TIMELINETEST_USER1', pin1);
