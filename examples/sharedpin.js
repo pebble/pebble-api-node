@@ -2,11 +2,17 @@ var Timeline = require('../index');
 
 var timeline = new Timeline;
 
+// set timeline api key
+timeline.setApiKey('TIMELINETEST_KEY1');
+
+// set topics
+var topics = ['parties'];
+
 // create a new pin
 var pin1 = new Timeline.Pin();
 
 // set the pin id
-pin1.setId('test-pin-5245');
+pin1.setId('test-pin-5246');
 
 var now = new Date();
 
@@ -60,7 +66,7 @@ pin1.addAction(new Timeline.Pin.Action({
 console.log(pin1);
 
 // send the pin
-timeline.sendUserPin('TIMELINETEST_USER1', pin1, function (err, body) {
+timeline.sendSharedPin(topics, pin1, function (err, body) {
   if (err) {
     return console.error(err);
   }
