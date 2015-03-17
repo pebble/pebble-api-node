@@ -1,1 +1,1 @@
-module.exports = require('./lib/Timeline');
+module.exports = require('./lib/timeline');
