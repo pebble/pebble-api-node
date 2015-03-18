@@ -18,14 +18,14 @@ var pin1 = new Timeline.Pin({
     tinyIcon: Timeline.Pin.Icon.Calendar,
     title: 'T-60 minutes'
   })
-})).addReminder(new Timeline.Pin.Reminder({
+})).addReminder({
   time: new Date('2015-03-17 19:50:00'),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
     tinyIcon: Timeline.Pin.Icon.Calendar,
     title: 'T-10 minutes'
   })
-})).addAction(new Timeline.Pin.Action({
+}).addAction(new Timeline.Pin.Action({
   title: 'Action1',
   type: Timeline.Pin.ActionType.openWatchApp,
   launchCode: 8

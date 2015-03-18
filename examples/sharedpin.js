@@ -1,9 +1,8 @@
 var Timeline = require('../index');
 
-var timeline = new Timeline;
-
-// set timeline api key
-timeline.setApiKey('TIMELINETEST_KEY1');
+var timeline = new Timeline({
+  apiKey: 'TIMELINETEST_KEY1'
+});
 
 // set topics
 var topics = ['parties'];
