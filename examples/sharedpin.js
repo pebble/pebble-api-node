@@ -16,6 +16,7 @@ var pin1 = new Timeline.Pin({
   duration: 10
 }).setLayout(new Timeline.Pin.Layout({
   type: Timeline.Pin.LayoutType.genericPin,
+  tinyIcon: Timeline.Pin.Icon.Pin,
   title: 'Pin Title'
 })).addReminder(new Timeline.Pin.Reminder({
   time: new Date('2015-03-17 19:00:00'),
