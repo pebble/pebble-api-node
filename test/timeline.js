@@ -16,9 +16,9 @@ describe('Timeline', function () {
     timeline = new Timeline({ apiRoot: 'http://timeline_api', apiKey: 'API_KEY' });
     done();
   });
-  
+
   describe('#sendUserPin', function () {
-    
+
     it('should respond with an error if userToken is not a string', function (done) {
       timeline.sendUserPin(5, fakePin, function (err) {
         assert.ok(err instanceof Error);
@@ -26,7 +26,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it.skip('should respond with an error if pin is not a Pin object', function (done) {
       timeline.sendUserPin('USER_TOKEN', {}, function (err) {
         assert.ok(err instanceof Error);
@@ -34,7 +34,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it('should send a PUT request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
         reqheaders: { 'X-User-Token': 'USER_TOKEN' }
@@ -46,11 +46,11 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
   });
-  
+
   describe('#sendSharedPin', function () {
-    
+
     it('should respond with an error if apiKey has not been set', function (done) {
       var badTimeline = new Timeline();
       badTimeline.sendSharedPin([], fakePin, function (err) {
@@ -59,7 +59,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it('should respond with an error if topics is not an array', function (done) {
       timeline.sendSharedPin(5, fakePin, function (err) {
         assert.ok(err instanceof Error);
@@ -67,7 +67,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it.skip('should respond with an error if pin is not a Pin object', function (done) {
       timeline.sendSharedPin([], {}, function (err) {
         assert.ok(err instanceof Error);
@@ -75,7 +75,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it('should send a PUT request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
         reqheaders: { 'X-API-Key': 'API_KEY' }
@@ -87,11 +87,11 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
   });
-  
+
   describe('#subscribe', function () {
-    
+
     it('should respond with an error if userToken is not a string', function (done) {
       timeline.subscribe(5, 'topic', function (err) {
         assert.ok(err instanceof Error);
@@ -99,7 +99,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it('should respond with an error if topic is not a string', function (done) {
       timeline.subscribe('USER_TOKEN', 5, function (err) {
         assert.ok(err instanceof Error);
@@ -107,7 +107,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it('should send a POST request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
           reqheaders: { 'X-User-Token': 'USER_TOKEN' }
@@ -119,11 +119,11 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
   });
-  
+
   describe('#unsubscribe', function () {
-    
+
     it('should respond with an error if userToken is not a string', function (done) {
       timeline.unsubscribe(5, 'topic', function (err) {
         assert.ok(err instanceof Error);
@@ -131,7 +131,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it('should respond with an error if topic is not a string', function (done) {
       timeline.unsubscribe('USER_TOKEN', 5, function (err) {
         assert.ok(err instanceof Error);
@@ -139,10 +139,10 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     it('should send a DELETE request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
-        reqheaders: { 'X-User-Token': 'USER_TOKEN' } 
+        reqheaders: { 'X-User-Token': 'USER_TOKEN' }
       }).delete('/v1/user/subscriptions/TOPIC').reply(200);
 
       timeline.unsubscribe('USER_TOKEN', 'TOPIC', function (err) {
@@ -151,7 +151,7 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
   });
 
 });

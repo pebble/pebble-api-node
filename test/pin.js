@@ -7,42 +7,42 @@ var Pin = require('../lib/timeline').Pin;
 
 describe('Pin', function () {
   'use strict';
-    
+
   it('should throw if id is not a string', function (done) {
     assert.throws(function () { new Pin({ id: 5 }); });
     done();
   });
-  
+
   it('should throw if time is not a Date object', function (done) {
     assert.throws(function () { new Pin({ time: 5 }); });
     done();
   });
-  
+
   it('should throw if duration is not a number', function (done) {
     assert.throws(function () { new Pin({ duration: '50' }); });
     done();
   });
-    
+
   it('should throw if reminders is not an array', function (done) {
     assert.throws(function () { new Pin({ reminders: {} }); });
     done();
   });
-  
+
   it('should throw if actions is not an array', function (done) {
     assert.throws(function () { new Pin({ actions: 'Do a thing' }); });
     done();
   });
-  
+
   it('should throw if time is not set', function (done) {
     assert.throws(function () { new Pin({ layout: new Pin.Layout() }); });
     done();
   });
-  
+
   it('should throw if layout is not set', function (done) {
     assert.throws(function () { new Pin({ time: new Date() }); });
     done();
   });
-  
+
   it('should set the properties passed in at construction', function (done) {
     var now = new Date();
     var pin  = new Pin({
@@ -64,7 +64,7 @@ describe('Pin', function () {
     assert.equal(pin.toJSON().id, 'ABCDEF');
     done();
   });
-  
+
   it('should convert layout to a Layout object', function (done) {
     var pin  = new Pin({
       time: new Date(),
@@ -74,7 +74,7 @@ describe('Pin', function () {
     done();
   });
 
-  
+
   it('should convert createMessage to a Notification object', function (done) {
     var pin  = new Pin({
       time: new Date(),
@@ -84,7 +84,7 @@ describe('Pin', function () {
     assert.ok(pin.toJSON().createMessage instanceof Pin.Notification);
     done();
   });
-  
+
   it('should convert updateMessage to a Notification object', function (done) {
     var pin  = new Pin({
       time: new Date(),
@@ -94,18 +94,18 @@ describe('Pin', function () {
     assert.ok(pin.toJSON().updateMessage instanceof Pin.Notification);
     done();
   });
-  
+
   describe('#setLayout', function () {
-    
+
     it('should throw if layout is not a Layout object', function (done) {
       assert.throws(function () { new Pin({ layout: 'layout4' }); });
       done();
     });
-    
+
     it('should update the layout of the pin', function (done) {
       done();
     });
-    
+
   });
-  
+
 });

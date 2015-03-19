@@ -1,6 +1,8 @@
+'use strict'
+
 var Timeline = require('../index');
 
-var timeline = new Timeline;
+var timeline = new Timeline();
 
 var now = new Date();
 

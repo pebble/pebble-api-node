@@ -1,10 +1,12 @@
+'use strict'
+
 var Timeline = require('../index');
 
-var timeline = new Timeline;
+var timeline = new Timeline();
 
 var userToken = 'TIMELINETEST_USER1';
 
-var topic = [
+var topics = [
   'watches',
   'sports'
 ];
