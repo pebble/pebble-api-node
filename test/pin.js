@@ -49,7 +49,11 @@ describe('Pin', function () {
       id: 'ABCDEF',
       time: now,
       duration: 1000,
-      layout: new Pin.Layout(),
+      layout: new Pin.Layout({
+        type: 'genericPin',
+        title: 'Title',
+        tinyIcon: Pin.Icon.Pin
+      }),
       createMessage: new Pin.Notification(),
       updateMessage: new Pin.Notification(),
       actions: [
@@ -68,7 +72,11 @@ describe('Pin', function () {
   it('should convert layout to a Layout object', function (done) {
     var pin  = new Pin({
       time: new Date(),
-      layout: {},
+      layout: {
+        type: 'genericPin',
+        title: 'Title',
+        tinyIcon: Pin.Icon.Pin
+      },
     });
     assert.ok(pin.toJSON().layout instanceof Pin.Layout);
     done();
@@ -78,7 +86,11 @@ describe('Pin', function () {
   it('should convert createMessage to a Notification object', function (done) {
     var pin  = new Pin({
       time: new Date(),
-      layout: new Pin.Layout(),
+      layout: new Pin.Layout({
+        type: 'genericPin',
+        title: 'Title',
+        tinyIcon: Pin.Icon.Football
+      }),
       createMessage: {},
     });
     assert.ok(pin.toJSON().createMessage instanceof Pin.Notification);
@@ -88,7 +100,11 @@ describe('Pin', function () {
   it('should convert updateMessage to a Notification object', function (done) {
     var pin  = new Pin({
       time: new Date(),
-      layout: new Pin.Layout(),
+      layout: new Pin.Layout({
+        type: 'genericPin',
+        title: 'Title',
+        tinyIcon: Pin.Icon.Sun
+      }),
       updateMessage: {},
     });
     assert.ok(pin.toJSON().updateMessage instanceof Pin.Notification);

@@ -10,7 +10,15 @@ describe('Timeline', function () {
   'use strict';
 
   var timeline = null;
-  var fakePin = new Timeline.Pin({ id: '1234', time: new Date(), layout: new Timeline.Pin.Layout() });
+  var fakePin = new Timeline.Pin({
+    id: '1234',
+    time: new Date(),
+    layout: new Timeline.Pin.Layout({
+      type: 'genericPin',
+      title: 'Title',
+      tinyIcon: Timeline.Pin.Icon.Pin
+    })
+  });
 
   beforeEach(function (done) {
     timeline = new Timeline({ apiRoot: 'http://timeline_api', apiKey: 'API_KEY' });
