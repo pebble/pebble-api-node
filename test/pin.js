@@ -1,5 +1,6 @@
 /* global describe */
 /* global it */
+/* global beforeEach */
 
 var assert = require('assert');
 
@@ -7,39 +8,56 @@ var Pin = require('../lib/timeline').Pin;
 
 describe('Pin', function () {
   'use strict';
+  
+  var layout = new Pin.Layout({
+    type: Pin.LayoutType.genericPin,
+    title: 'Pin Title',
+    tinyIcon: Pin.Icon.Pin
+  });
 
   it('should throw if id is not a string', function (done) {
-    assert.throws(function () { new Pin({ id: 5 }); });
+    var pinData = { id: 5, layout: layout };
+    assert.throws(function () { new Pin(pinData); });
     done();
   });
 
   it('should throw if time is not a Date object', function (done) {
-    assert.throws(function () { new Pin({ time: 5 }); });
+    var pinData = { time: 5, layout: layout };
+    assert.throws(function () { new Pin(pinData); });
     done();
   });
 
   it('should throw if duration is not a number', function (done) {
-    assert.throws(function () { new Pin({ duration: '50' }); });
+    var pinData = { duration: '50', layout: layout };
+    assert.throws(function () { new Pin(pinData); });
     done();
   });
 
   it('should throw if reminders is not an array', function (done) {
-    assert.throws(function () { new Pin({ reminders: {} }); });
+    var pinData = { reminders: {}, layout: layout };
+    assert.throws(function () { new Pin(pinData); });
     done();
   });
 
   it('should throw if actions is not an array', function (done) {
-    assert.throws(function () { new Pin({ actions: 'Do a thing' }); });
+    var pinData = { actions: 'Do a thing', layout: layout };
+    assert.throws(function () { new Pin(pinData); });
     done();
   });
 
   it('should throw if time is not set', function (done) {
-    assert.throws(function () { new Pin({ layout: new Pin.Layout() }); });
+    var pinData = {
+      layout: layout
+    };
+    assert.throws(function () { new Pin(pinData); });
     done();
   });
 
   it('should throw if layout is not set', function (done) {
-    assert.throws(function () { new Pin({ time: new Date() }); });
+    var pinData = {
+      time: new Date()
+    };
+    assert.throws(function () { new Pin(pinData); });
     done();
   });
 
@@ -111,14 +129,79 @@ describe('Pin', function () {
     done();
   });
 
-  describe('#setLayout', function () {
-
-    it('should throw if layout is not a Layout object', function (done) {
-      assert.throws(function () { new Pin({ layout: 'layout4' }); });
+  describe('#addReminder', function () {
+    
+    var pin;
+    
+    beforeEach(function () {
+      pin  = new Pin({
+        time: new Date(),
+        layout: new Pin.Layout({
+          type: Pin.LayoutType.genericPin,
+          title: 'Pin Title',
+          tinyIcon: Pin.Icon.Pin  
+        })
+      });
+    });
+    
+    it.skip('should throw if reminder is not valid', function (done) {
+      assert.throws(function () { pin.addReminder(5); });
       done();
     });
 
-    it('should update the layout of the pin', function (done) {
+    it('should add a new reminder to the pin', function (done) {
+      var newReminder = new Pin.Reminder();
+      assert.equal(0, pin.toJSON().reminders.length);
+      pin.addReminder(newReminder);
+      assert.equal(1, pin.toJSON().reminders.length);
+      assert.equal(pin.toJSON().reminders[0], newReminder);
+      done();
+    });
+    
+    it('should convert an object literal to Reminder object', function (done) {
+      assert.equal(0, pin.toJSON().reminders.length);
+      pin.addReminder({ });
+      assert.equal(1, pin.toJSON().reminders.length);
+      assert.ok(pin.toJSON().reminders[0] instanceof Pin.Reminder);
+      done();
+    });
+
+  });
+  
+  describe('#addAction', function () {
+    
+    var pin;
+    
+    beforeEach(function () {
+      pin  = new Pin({
+        time: new Date(),
+        layout: new Pin.Layout({
+          type: Pin.LayoutType.genericPin,
+          title: 'Pin Title',
+          tinyIcon: Pin.Icon.Pin  
+        })
+      });
+    });
+    
+    it.skip('should throw if action is not valid', function (done) {
+      assert.throws(function () { pin.addAction(5); });
+      done();
+    });
+
+    it('should add a new action to the pin', function (done) {
+      var newAction = new Pin.Action();
+      assert.equal(0, pin.toJSON().actions.length);
+      pin.addAction(newAction);
+      assert.equal(1, pin.toJSON().actions.length);
+      assert.equal(pin.toJSON().actions[0], newAction);
+      done();
+    });
+    
+    it('should convert an object literal to Action object', function (done) {
+      assert.equal(0, pin.toJSON().actions.length);
+      pin.addAction({ });
+      assert.equal(1, pin.toJSON().actions.length);
+      assert.ok(pin.toJSON().actions[0] instanceof Pin.Action);
       done();
     });
 

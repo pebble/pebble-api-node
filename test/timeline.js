@@ -10,7 +10,7 @@ describe('Timeline', function () {
   'use strict';
 
   var timeline = null;
-  var fakePin = new Timeline.Pin({
+  var fakePinData = {
     id: '1234',
     time: new Date(),
     layout: new Timeline.Pin.Layout({
@@ -18,7 +18,8 @@ describe('Timeline', function () {
       title: 'Title',
       tinyIcon: Timeline.Pin.Icon.Pin
     })
-  });
+  };
+  var fakePin = new Timeline.Pin(fakePinData);
 
   beforeEach(function (done) {
     timeline = new Timeline({ apiRoot: 'http://timeline_api', apiKey: 'API_KEY' });
@@ -35,12 +36,21 @@ describe('Timeline', function () {
       });
     });
 
-    it.skip('should respond with an error if pin is not a Pin object', function (done) {
-      timeline.sendUserPin('USER_TOKEN', {}, function (err) {
-        assert.ok(err instanceof Error);
-        assert.equal(err.message, 'Invalid Pin.');
+    it('should convert the pin argument to a Pin object', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+      }).put('/v1/user/pins/1234').reply(200);
+      
+      timeline.sendUserPin('USER_TOKEN', fakePinData, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
         done();
       });
+    });
+    
+    it('should throw an an error if callback is not a function', function (done) {
+      assert.throws(function () { timeline.sendUserPin('USER_TOKEN', fakePin, 5); });
+      done();
     });
 
     it('should send a PUT request to the timeline API', function (done) {
@@ -53,6 +63,77 @@ describe('Timeline', function () {
         timelineApi.done();
         done();
       });
+    });
+    
+    describe('errors', function () {
+      
+      it('should handle a HTTP status of 400', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+        }).put('/v1/user/pins/1234').reply(400);
+        
+        timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message, 'The pin object submitted was invalid.');
+          timelineApi.done();
+          done();
+        });
+      });
+      
+      it('should handle a HTTP status of 410', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: { 'X-User-Token': 'BAD_USER_TOKEN' }
+        }).put('/v1/user/pins/1234').reply(410);
+        
+        timeline.sendUserPin('BAD_USER_TOKEN', fakePin, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message,
+            'The user token submitted was invalid or does not exist.');
+          timelineApi.done();
+          done();
+        });
+      });
+      
+      it('should handle a HTTP status of 429', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+        }).put('/v1/user/pins/1234').reply(429);
+        
+        timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message, 'Server is sending updates too quickly.');
+          timelineApi.done();
+          done();
+        });
+      });
+      
+      it('should handle a HTTP status of 503', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+        }).put('/v1/user/pins/1234').reply(503);
+        
+        timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message,
+            'Could not save pin due to a temporary server error.');
+          timelineApi.done();
+          done();
+        });
+      });
+      
+      it('should handle an unknown HTTP status', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+        }).put('/v1/user/pins/1234').reply(1000);
+        
+        timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message, 'Unknown error. Status code: 1000');
+          timelineApi.done();
+          done();
+        });
+      });
+      
     });
 
   });
@@ -76,10 +157,14 @@ describe('Timeline', function () {
       });
     });
 
-    it.skip('should respond with an error if pin is not a Pin object', function (done) {
-      timeline.sendSharedPin([], {}, function (err) {
-        assert.ok(err instanceof Error);
-        assert.equal(err.message, 'Invalid Pin.');
+    it('should convert the pin argument to a Pin object', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: { 'X-API-Key': 'API_KEY' }
+      }).put('/v1/shared/pins/1234').reply(200);
+
+      timeline.sendSharedPin([], fakePinData, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
         done();
       });
     });
