@@ -6,13 +6,10 @@ var timeline = new Timeline();
 
 var userToken = 'TIMELINETEST_USER1';
 
-var topics = [
-  'watches',
-  'sports'
-];
+var topic = 'sports';
 
-// subscribe the user to topics
-timeline.subscribe(userToken, topics, function (err, body) {
+// subscribe the user to the sports topic
+timeline.subscribe(userToken, topic, function (err, body) {
   if (err) {
     return console.error(err);
   }

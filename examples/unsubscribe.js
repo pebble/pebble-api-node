@@ -6,13 +6,10 @@ var timeline = new Timeline();
 
 var userToken = 'TIMELINETEST_USER1';
 
-var topics = [
-  'watches',
-  'sports'
-];
+var topic = 'sports';
 
-// unsubscribe the user from topics
-timeline.unsubscribe(userToken, topics, function (err, body) {
+// unsubscribe the user from the sports topic
+timeline.unsubscribe(userToken, topic, function (err, body) {
   if (err) {
     return console.error(err);
   }

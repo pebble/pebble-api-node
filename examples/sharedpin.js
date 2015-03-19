@@ -22,14 +22,14 @@ var pin1 = new Timeline.Pin({
     title: 'Pin Title'
   }
 }).addReminder(new Timeline.Pin.Reminder({
-  time: new Date('2015-03-17 19:00:00'),
+  time: new Date(now.getTime() - 60*60000),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
     tinyIcon: Timeline.Pin.Icon.Calendar,
     title: 'T-60 minutes'
   })
 })).addReminder(new Timeline.Pin.Reminder({
-  time: new Date('2015-03-17 19:50:00'),
+  time: new Date(now.getTime() - 10*60000),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
     tinyIcon: Timeline.Pin.Icon.Calendar,
@@ -46,7 +46,7 @@ var pin1 = new Timeline.Pin({
 }));
 
 // log the pin object
-console.log(pin1);
+// console.log(JSON.stringify(pin1, null, 2));
 
 // send the pin
 timeline.sendSharedPin(topics, pin1, function (err, body) {
