@@ -1,10 +1,7 @@
 {
-  "name": "pebble-timeline-client",
-  "version": "0.0.1",
-  "keywords": [
-    "pebble",
-    "timeline"
-  ],
+  "name": "pebble-api",
+  "description": "Pebble API client",
+  "version": "0.0.0",
   "main": "index.js",
   "engines": {
     "node": ">=0.10"
@@ -13,6 +10,18 @@
     "test": "./node_modules/.bin/mocha",
     "coverage": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha"
   },
+  "keywords": [
+    "pebble",
+    "timeline"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pebble/pebble-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pebble/pebble-api/issues"
+  },
+  "homepage": "https://github.com/pebble/pebble-api",
   "dependencies": {
     "request": "~2.53.0",
     "yargs": "3.5.4"
