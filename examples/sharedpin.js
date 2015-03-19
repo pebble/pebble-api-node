@@ -22,14 +22,14 @@ var pin1 = new Timeline.Pin({
     title: 'Pin Title'
   }
 }).addReminder(new Timeline.Pin.Reminder({
-  time: new Date(now.getTime() - 60*60000),
+  time: new Date(now.getTime() - 60 * 60000),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
     tinyIcon: Timeline.Pin.Icon.Calendar,
     title: 'T-60 minutes'
   })
 })).addReminder(new Timeline.Pin.Reminder({
-  time: new Date(now.getTime() - 10*60000),
+  time: new Date(now.getTime() - 10 * 60000),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
     tinyIcon: Timeline.Pin.Icon.Calendar,
