@@ -1,6 +1,5 @@
 /* global describe */
 /* global it */
-/* global beforeEach */
 
 var assert = require('assert');
 
@@ -40,46 +39,6 @@ describe('Action', function () {
     };
     new Action(actionData);
     done();
-  });
-
-  describe('#toJSON', function () {
-    var action;
-    var actionData = {
-      title: 'Action',
-      type: Pin.ActionType.openWatchApp,
-      launchCode: 4
-    };
-
-    beforeEach(function (done) {
-      action = new Action(actionData);
-      done();
-    });
-
-    it('should return an object literal', function (done) {
-      assert.deepEqual(action.toJSON(), actionData);
-      done();
-    });
-
-  });
-
-  describe('#inspect', function () {
-    var action;
-    var actionData = {
-      title: 'Action',
-      type: Pin.ActionType.openWatchApp,
-      launchCode: 4
-    };
-
-    beforeEach(function (done) {
-      action = new Action(actionData);
-      done();
-    });
-
-    it('should return an object literal', function (done) {
-      assert.deepEqual(action.inspect(), actionData);
-      done();
-    });
-
   });
 
 });

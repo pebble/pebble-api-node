@@ -72,18 +72,25 @@ describe('Pin', function () {
         title: 'Title',
         tinyIcon: Pin.Icon.Pin
       }),
-      createMessage: new Pin.Notification(),
-      updateMessage: new Pin.Notification(),
+      createMessage: new Pin.Notification({ time: new Date() }),
+      updateMessage: new Pin.Notification({ time: new Date() }),
       actions: [
-        new Pin.Action()
+        new Pin.Action({ type: Pin.ActionType.openWatchApp })
       ],
       reminders: [
-        new Pin.Reminder()
+        new Pin.Reminder({
+          time: new Date(),
+          layout: new Pin.Layout({
+            type: 'genericReminder',
+            title: 'Title',
+            tinyIcon: Pin.Icon.Pin
+          })
+        })
       ],
     });
-    assert.equal(pin.toJSON().time, now);
-    assert.equal(pin.toJSON().duration, 1000);
-    assert.equal(pin.toJSON().id, 'ABCDEF');
+    assert.equal(pin.time, now);
+    assert.equal(pin.duration, 1000);
+    assert.equal(pin.id, 'ABCDEF');
     done();
   });
 
@@ -96,7 +103,7 @@ describe('Pin', function () {
         tinyIcon: Pin.Icon.Pin
       },
     });
-    assert.ok(pin.toJSON().layout instanceof Pin.Layout);
+    assert.ok(pin.layout instanceof Pin.Layout);
     done();
   });
 
@@ -108,9 +115,11 @@ describe('Pin', function () {
         title: 'Title',
         tinyIcon: Pin.Icon.Football
       }),
-      createMessage: {},
+      createMessage: {
+        time: new Date()
+      },
     });
-    assert.ok(pin.toJSON().createMessage instanceof Pin.Notification);
+    assert.ok(pin.createMessage instanceof Pin.Notification);
     done();
   });
 
@@ -122,9 +131,11 @@ describe('Pin', function () {
         title: 'Title',
         tinyIcon: Pin.Icon.Sun
       }),
-      updateMessage: {},
+      updateMessage: {
+        time: new Date()
+      },
     });
-    assert.ok(pin.toJSON().updateMessage instanceof Pin.Notification);
+    assert.ok(pin.updateMessage instanceof Pin.Notification);
     done();
   });
 
@@ -143,25 +154,39 @@ describe('Pin', function () {
       });
     });
 
-    it.skip('should throw if reminder is not valid', function (done) {
+    it('should throw if reminder is not valid', function (done) {
       assert.throws(function () { pin.addReminder(5); });
       done();
     });
 
     it('should add a new reminder to the pin', function (done) {
-      var newReminder = new Pin.Reminder();
-      assert.equal(0, pin.toJSON().reminders.length);
+      var newReminder = new Pin.Reminder({
+        time: new Date(),
+        layout: new Pin.Layout({
+          type: 'genericReminder',
+          title: 'Title',
+          tinyIcon: Pin.Icon.Pin
+        })
+      });
+      assert.equal(0, pin.reminders.length);
       pin.addReminder(newReminder);
-      assert.equal(1, pin.toJSON().reminders.length);
-      assert.equal(pin.toJSON().reminders[0], newReminder);
+      assert.equal(1, pin.reminders.length);
+      assert.equal(pin.reminders[0], newReminder);
       done();
     });
 
     it('should convert an object literal to Reminder object', function (done) {
-      assert.equal(0, pin.toJSON().reminders.length);
-      pin.addReminder({ });
-      assert.equal(1, pin.toJSON().reminders.length);
-      assert.ok(pin.toJSON().reminders[0] instanceof Pin.Reminder);
+      assert.equal(0, pin.reminders.length);
+      pin.addReminder({
+        time: new Date(),
+        layout: new Pin.Layout({
+          type: 'genericReminder',
+          title: 'Title',
+          tinyIcon: Pin.Icon.Pin
+        })
+      });
+      assert.equal(1, pin.reminders.length);
+      assert.ok(pin.reminders[0] instanceof Pin.Reminder);
       done();
     });
 
@@ -182,25 +207,25 @@ describe('Pin', function () {
       });
     });
 
-    it.skip('should throw if action is not valid', function (done) {
+    it('should throw if action is not valid', function (done) {
       assert.throws(function () { pin.addAction(5); });
       done();
     });
 
     it('should add a new action to the pin', function (done) {
-      var newAction = new Pin.Action();
-      assert.equal(0, pin.toJSON().actions.length);
+      var newAction = new Pin.Action({ type: Pin.ActionType.openWatchApp });
+      assert.equal(0, pin.actions.length);
       pin.addAction(newAction);
-      assert.equal(1, pin.toJSON().actions.length);
-      assert.equal(pin.toJSON().actions[0], newAction);
+      assert.equal(1, pin.actions.length);
+      assert.equal(pin.actions[0], newAction);
       done();
     });
 
     it('should convert an object literal to Action object', function (done) {
-      assert.equal(0, pin.toJSON().actions.length);
-      pin.addAction({ });
-      assert.equal(1, pin.toJSON().actions.length);
-      assert.ok(pin.toJSON().actions[0] instanceof Pin.Action);
+      assert.equal(0, pin.actions.length);
+      pin.addAction({ type: Pin.ActionType.openWatchApp });
+      assert.equal(1, pin.actions.length);
+      assert.ok(pin.actions[0] instanceof Pin.Action);
       done();
     });
 

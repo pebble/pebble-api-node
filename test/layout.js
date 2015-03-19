@@ -500,7 +500,7 @@ describe('Layout', function () {
       largeIcon: Pin.Icon.Pin
     };
     var layout = new Layout(layoutData);
-    assert.deepEqual(layout.toJSON(), layoutData);
+    assert.deepEqual(layout, layoutData);
     done();
   });
 
