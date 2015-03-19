@@ -15,12 +15,13 @@ var now = new Date();
 var pin1 = new Timeline.Pin({
   id: 'test-pin-5246',
   time: now,
-  duration: 10
-}).setLayout(new Timeline.Pin.Layout({
-  type: Timeline.Pin.LayoutType.genericPin,
-  tinyIcon: Timeline.Pin.Icon.Pin,
-  title: 'Pin Title'
-})).addReminder(new Timeline.Pin.Reminder({
+  duration: 10,
+  layout: {
+    type: Timeline.Pin.LayoutType.genericPin,
+    tinyIcon: Timeline.Pin.Icon.Pin,
+    title: 'Pin Title'
+  }
+}).addReminder(new Timeline.Pin.Reminder({
   time: new Date('2015-03-17 19:00:00'),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
