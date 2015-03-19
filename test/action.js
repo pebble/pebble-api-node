@@ -56,7 +56,7 @@ describe('Action', function () {
     });
 
     it('should return an object literal', function (done) {
-      assert.deepEqual(action.toJSON(), actionData)
+      assert.deepEqual(action.toJSON(), actionData);
       done();
     });
 

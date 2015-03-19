@@ -1,13 +1,20 @@
 
-test: lint
+test: lint jscs
 	@NODE_ENV=test ./node_modules/.bin/mocha
 
 lint:
 	@ find . -name "*.js" \
 		-not -path "./node_modules/*" \
-		-not -path "./test/*" \
+		-not -path "./docs/*" \
 		-not -path "./coverage/*" -print0 | \
-		xargs -0 ./node_modules/jshint/bin/jshint
+		xargs -0 ./node_modules/.bin/jshint
+		
+jscs:
+	@ find . -name "*.js" \
+		-not -path "./node_modules/*" \
+		-not -path "./docs/*" \
+		-not -path "./coverage/*" -print0 | \
+		xargs -0 ./node_modules/.bin/jscs
 
 test-cov:
 	@NODE_ENV=test node \

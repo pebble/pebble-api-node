@@ -38,7 +38,9 @@ describe('Timeline', function () {
 
     it('should convert the pin argument to a Pin object', function (done) {
       var timelineApi = nock('http://timeline_api', {
-        reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
       }).put('/v1/user/pins/1234').reply(200);
 
       timeline.sendUserPin('USER_TOKEN', fakePinData, function (err) {
@@ -55,7 +57,9 @@ describe('Timeline', function () {
 
     it('should send a PUT request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
-        reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
       }).put('/v1/user/pins/1234').reply(200);
 
       timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
@@ -69,7 +73,9 @@ describe('Timeline', function () {
 
       it('should handle a HTTP status of 400', function (done) {
         var timelineApi = nock('http://timeline_api', {
-          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+          reqheaders: {
+            'X-User-Token': 'USER_TOKEN'
+          }
         }).put('/v1/user/pins/1234').reply(400);
 
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
@@ -82,7 +88,9 @@ describe('Timeline', function () {
 
       it('should handle a HTTP status of 410', function (done) {
         var timelineApi = nock('http://timeline_api', {
-          reqheaders: { 'X-User-Token': 'BAD_USER_TOKEN' }
+          reqheaders: {
+            'X-User-Token': 'BAD_USER_TOKEN'
+          }
         }).put('/v1/user/pins/1234').reply(410);
 
         timeline.sendUserPin('BAD_USER_TOKEN', fakePin, function (err) {
@@ -96,7 +104,9 @@ describe('Timeline', function () {
 
       it('should handle a HTTP status of 429', function (done) {
         var timelineApi = nock('http://timeline_api', {
-          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+          reqheaders: {
+            'X-User-Token': 'USER_TOKEN'
+          }
         }).put('/v1/user/pins/1234').reply(429);
 
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
@@ -109,7 +119,9 @@ describe('Timeline', function () {
 
       it('should handle a HTTP status of 503', function (done) {
         var timelineApi = nock('http://timeline_api', {
-          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+          reqheaders: {
+            'X-User-Token': 'USER_TOKEN'
+          }
         }).put('/v1/user/pins/1234').reply(503);
 
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
@@ -123,7 +135,9 @@ describe('Timeline', function () {
 
       it('should handle an unknown HTTP status', function (done) {
         var timelineApi = nock('http://timeline_api', {
-          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+          reqheaders: {
+            'X-User-Token': 'USER_TOKEN'
+          }
         }).put('/v1/user/pins/1234').reply(1000);
 
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
@@ -159,7 +173,9 @@ describe('Timeline', function () {
 
     it('should convert the pin argument to a Pin object', function (done) {
       var timelineApi = nock('http://timeline_api', {
-        reqheaders: { 'X-API-Key': 'API_KEY' }
+        reqheaders: {
+          'X-API-Key': 'API_KEY'
+        }
       }).put('/v1/shared/pins/1234').reply(200);
 
       timeline.sendSharedPin([], fakePinData, function (err) {
@@ -171,7 +187,9 @@ describe('Timeline', function () {
 
     it('should send a PUT request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
-        reqheaders: { 'X-API-Key': 'API_KEY' }
+        reqheaders: {
+          'X-API-Key': 'API_KEY'
+        }
       }).put('/v1/shared/pins/1234').reply(200);
 
       timeline.sendSharedPin(['topic1'], fakePin, function (err) {
@@ -203,7 +221,9 @@ describe('Timeline', function () {
 
     it('should send a POST request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
-          reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+          reqheaders: {
+            'X-User-Token': 'USER_TOKEN'
+          }
         }).post('/v1/user/subscriptions/TOPIC').reply(200);
 
       timeline.subscribe('USER_TOKEN', 'TOPIC', function (err) {
@@ -235,7 +255,9 @@ describe('Timeline', function () {
 
     it('should send a DELETE request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
-        reqheaders: { 'X-User-Token': 'USER_TOKEN' }
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
       }).delete('/v1/user/subscriptions/TOPIC').reply(200);
 
       timeline.unsubscribe('USER_TOKEN', 'TOPIC', function (err) {

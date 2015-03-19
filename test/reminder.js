@@ -29,7 +29,7 @@ describe('Reminder', function () {
   });
 
   it('should be happy with a time and layout', function (done) {
-    var reminder = new Reminder({ time: new Date(), layout: fakeLayout });
+    new Reminder({ time: new Date(), layout: fakeLayout });
     done();
   });
 

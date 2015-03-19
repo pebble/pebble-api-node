@@ -18,13 +18,15 @@ describe('Notification', function () {
   var fakeLayout = new Layout(fakeLayouData);
 
   it('should throw an error if time is not a Date object', function (done) {
-    assert.throws(function () { new Notification({ time: 5, layout: fakeLayout }); });
+    var notificationData = { time: 5, layout: fakeLayout };
+    assert.throws(function () { new Notification(notificationData); });
     done();
   });
 
   it('should convert the layout option to a Layout object', function (done) {
-    var reminder = new Notification({ time: new Date(), layout: fakeLayouData });
-    assert.ok(reminder.toJSON().layout instanceof Layout);
+    var notificationData = { time: new Date(), layout: fakeLayouData };
+    var notification = new Notification(notificationData);
+    assert.ok(notification.toJSON().layout instanceof Layout);
     done();
   });
 

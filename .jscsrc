@@ -1,4 +1,8 @@
 {
 	"preset": "google",
-	"disallowSpacesInAnonymousFunctionExpression": null
+	"disallowSpacesInAnonymousFunctionExpression": null,
+	"maximumLineLength": 85,
+	"disallowTrailingWhitespace": true,
+	"requireSpacesInsideObjectBrackets": "all",
+	"disallowSpacesInsideObjectBrackets": null
 }

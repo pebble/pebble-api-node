@@ -100,7 +100,6 @@ describe('Pin', function () {
     done();
   });
 
-
   it('should convert createMessage to a Notification object', function (done) {
     var pin  = new Pin({
       time: new Date(),

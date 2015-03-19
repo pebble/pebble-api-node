@@ -312,7 +312,7 @@ describe('Layout', function () {
         scoreHome: '49',
         sportsGameState: 'in-game',
         broadcaster: 'ESPN'
-      }
+      };
       new Layout(layoutData);
       done();
     });
