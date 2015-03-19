@@ -11,7 +11,7 @@
     "latedef": "nofunc",
     "laxbreak": true,
     "laxcomma": true,
-    "newcap": false, // false because we have constructors that start with an underscore
+    "newcap": true,
     "node": true,
     "maxparams": 3, // if you need more, use an options object
     "maxdepth": 4,
