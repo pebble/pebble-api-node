@@ -9,9 +9,17 @@
   "engines": {
     "node": ">=0.10"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
   "dependencies": {
     "request": "~2.53.0",
     "yargs": "3.5.4"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^2.2.1",
+    "nock": "^1.2.0",
+    "should": "^5.2.0"
+  }
 }
