@@ -8,7 +8,7 @@ var Pin = require('../lib/timeline').Pin;
 
 describe('Pin', function () {
   'use strict';
-  
+
   var layout = new Pin.Layout({
     type: Pin.LayoutType.genericPin,
     title: 'Pin Title',
@@ -130,20 +130,20 @@ describe('Pin', function () {
   });
 
   describe('#addReminder', function () {
-    
+
     var pin;
-    
+
     beforeEach(function () {
       pin  = new Pin({
         time: new Date(),
         layout: new Pin.Layout({
           type: Pin.LayoutType.genericPin,
           title: 'Pin Title',
-          tinyIcon: Pin.Icon.Pin  
+          tinyIcon: Pin.Icon.Pin
         })
       });
     });
-    
+
     it.skip('should throw if reminder is not valid', function (done) {
       assert.throws(function () { pin.addReminder(5); });
       done();
@@ -157,7 +157,7 @@ describe('Pin', function () {
       assert.equal(pin.toJSON().reminders[0], newReminder);
       done();
     });
-    
+
     it('should convert an object literal to Reminder object', function (done) {
       assert.equal(0, pin.toJSON().reminders.length);
       pin.addReminder({ });
@@ -167,22 +167,22 @@ describe('Pin', function () {
     });
 
   });
-  
+
   describe('#addAction', function () {
-    
+
     var pin;
-    
+
     beforeEach(function () {
       pin  = new Pin({
         time: new Date(),
         layout: new Pin.Layout({
           type: Pin.LayoutType.genericPin,
           title: 'Pin Title',
-          tinyIcon: Pin.Icon.Pin  
+          tinyIcon: Pin.Icon.Pin
         })
       });
     });
-    
+
     it.skip('should throw if action is not valid', function (done) {
       assert.throws(function () { pin.addAction(5); });
       done();
@@ -196,7 +196,7 @@ describe('Pin', function () {
       assert.equal(pin.toJSON().actions[0], newAction);
       done();
     });
-    
+
     it('should convert an object literal to Action object', function (done) {
       assert.equal(0, pin.toJSON().actions.length);
       pin.addAction({ });

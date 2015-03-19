@@ -40,14 +40,14 @@ describe('Timeline', function () {
       var timelineApi = nock('http://timeline_api', {
         reqheaders: { 'X-User-Token': 'USER_TOKEN' }
       }).put('/v1/user/pins/1234').reply(200);
-      
+
       timeline.sendUserPin('USER_TOKEN', fakePinData, function (err) {
         assert.equal(err, null);
         timelineApi.done();
         done();
       });
     });
-    
+
     it('should throw an an error if callback is not a function', function (done) {
       assert.throws(function () { timeline.sendUserPin('USER_TOKEN', fakePin, 5); });
       done();
@@ -64,14 +64,14 @@ describe('Timeline', function () {
         done();
       });
     });
-    
+
     describe('errors', function () {
-      
+
       it('should handle a HTTP status of 400', function (done) {
         var timelineApi = nock('http://timeline_api', {
           reqheaders: { 'X-User-Token': 'USER_TOKEN' }
         }).put('/v1/user/pins/1234').reply(400);
-        
+
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
           assert.ok(err instanceof Error);
           assert.equal(err.message, 'The pin object submitted was invalid.');
@@ -79,12 +79,12 @@ describe('Timeline', function () {
           done();
         });
       });
-      
+
       it('should handle a HTTP status of 410', function (done) {
         var timelineApi = nock('http://timeline_api', {
           reqheaders: { 'X-User-Token': 'BAD_USER_TOKEN' }
         }).put('/v1/user/pins/1234').reply(410);
-        
+
         timeline.sendUserPin('BAD_USER_TOKEN', fakePin, function (err) {
           assert.ok(err instanceof Error);
           assert.equal(err.message,
@@ -93,12 +93,12 @@ describe('Timeline', function () {
           done();
         });
       });
-      
+
       it('should handle a HTTP status of 429', function (done) {
         var timelineApi = nock('http://timeline_api', {
           reqheaders: { 'X-User-Token': 'USER_TOKEN' }
         }).put('/v1/user/pins/1234').reply(429);
-        
+
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
           assert.ok(err instanceof Error);
           assert.equal(err.message, 'Server is sending updates too quickly.');
@@ -106,12 +106,12 @@ describe('Timeline', function () {
           done();
         });
       });
-      
+
       it('should handle a HTTP status of 503', function (done) {
         var timelineApi = nock('http://timeline_api', {
           reqheaders: { 'X-User-Token': 'USER_TOKEN' }
         }).put('/v1/user/pins/1234').reply(503);
-        
+
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
           assert.ok(err instanceof Error);
           assert.equal(err.message,
@@ -120,12 +120,12 @@ describe('Timeline', function () {
           done();
         });
       });
-      
+
       it('should handle an unknown HTTP status', function (done) {
         var timelineApi = nock('http://timeline_api', {
           reqheaders: { 'X-User-Token': 'USER_TOKEN' }
         }).put('/v1/user/pins/1234').reply(1000);
-        
+
         timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
           assert.ok(err instanceof Error);
           assert.equal(err.message, 'Unknown error. Status code: 1000');
@@ -133,7 +133,7 @@ describe('Timeline', function () {
           done();
         });
       });
-      
+
     });
 
   });

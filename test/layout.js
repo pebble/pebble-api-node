@@ -13,7 +13,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(5); });
     done();
   });
-  
+
   it('should throw if type is not a string', function (done) {
     var layoutData = {
       type: 5,
@@ -21,14 +21,14 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if type is not provided', function (done) {
     var layoutData = {
     };
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if type is not a valid layout type', function (done) {
     var layoutData = {
       type: 'NOT A LAYOUT'
@@ -36,7 +36,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if title is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -45,7 +45,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if shortTitle is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -54,7 +54,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if subtitle is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -63,7 +63,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if body is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -72,7 +72,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if tinyIcon is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -81,7 +81,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if smallIcon is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -90,7 +90,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if largeIcon is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -99,7 +99,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if locationName is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -108,7 +108,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if sender is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -117,7 +117,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if broadcaster is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -126,7 +126,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if rankAway is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -135,7 +135,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if rankHome is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -144,7 +144,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if nameAway is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -153,7 +153,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if nameHome is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -162,7 +162,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if recordAway is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -171,7 +171,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if recordHome is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -180,7 +180,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if scoreAway is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -189,7 +189,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if scoreHome is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -198,7 +198,7 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   it('should throw if sportsGameState is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.genericPin,
@@ -207,9 +207,9 @@ describe('Layout', function () {
     assert.throws(function () { new Layout(layoutData); });
     done();
   });
-  
+
   describe('genericPin', function () {
-    
+
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericPin,
@@ -218,7 +218,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericPin,
@@ -227,7 +227,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should create a valid genericPin Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericPin,
@@ -237,11 +237,11 @@ describe('Layout', function () {
       new Layout(layoutData);
       done();
     });
-    
+
   });
-  
+
   describe('calendarPin', function () {
-    
+
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.calendarPin
@@ -249,7 +249,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should create a valid genericPin Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.calendarPin,
@@ -258,11 +258,11 @@ describe('Layout', function () {
       new Layout(layoutData);
       done();
     });
-    
+
   });
-  
-  describe.skip('sportsPin', function () {
-    
+
+  describe('sportsPin', function () {
+
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.sportsPin,
@@ -272,7 +272,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.sportsPin,
@@ -282,7 +282,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if largeIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.sportsPin,
@@ -292,15 +292,15 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should create a valid sportsPin Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.sportsPin,
         title: 'Bulls at Bears',
         subtitle: 'Halftime',
         body: 'Game of the Century',
-        tinyIcon: Pin.Icon.Sports,
-        largeIcon: Pin.Icon.Sports,
+        tinyIcon: Pin.Icon.Football,
+        largeIcon: Pin.Icon.Football,
         lastUpdated: new Date(),
         rankAway: '03',
         rankHome: '08',
@@ -316,11 +316,11 @@ describe('Layout', function () {
       new Layout(layoutData);
       done();
     });
-    
+
   });
-  
+
   describe('weatherPin', function () {
-    
+
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.weatherPin,
@@ -331,7 +331,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.weatherPin,
@@ -342,7 +342,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if largeIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.weatherPin,
@@ -353,7 +353,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if locationName is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.weatherPin,
@@ -364,8 +364,8 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
-    it('should create a valid sportsPin Layout', function (done) {
+
+    it('should create a valid weatherPin Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.weatherPin,
         title: 'Pin Title',
@@ -376,11 +376,11 @@ describe('Layout', function () {
       new Layout(layoutData);
       done();
     });
-    
+
   });
-  
+
   describe('genericReminder', function () {
-    
+
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericReminder,
@@ -389,7 +389,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericReminder,
@@ -398,7 +398,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should create a valid genericReminder Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericReminder,
@@ -408,11 +408,11 @@ describe('Layout', function () {
       new Layout(layoutData);
       done();
     });
-    
+
   });
-  
+
   describe('genericNotification', function () {
-    
+
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericNotification,
@@ -421,7 +421,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericNotification,
@@ -430,7 +430,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should create a valid genericNotification Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.genericNotification,
@@ -440,11 +440,11 @@ describe('Layout', function () {
       new Layout(layoutData);
       done();
     });
-    
+
   });
-  
+
   describe('commNotification', function () {
-    
+
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.commNotification,
@@ -454,7 +454,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.commNotification,
@@ -464,7 +464,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should throw an error if sender is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.commNotification,
@@ -474,7 +474,7 @@ describe('Layout', function () {
       assert.throws(function () { new Layout(layoutData); });
       done();
     });
-    
+
     it('should create a valid commNotification Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.commNotification,
@@ -485,7 +485,7 @@ describe('Layout', function () {
       new Layout(layoutData);
       done();
     });
-    
+
   });
 
   it('should create a valid Layout with many attributes', function (done) {
@@ -503,5 +503,5 @@ describe('Layout', function () {
     assert.deepEqual(layout.toJSON(), layoutData);
     done();
   });
-  
+
 });
