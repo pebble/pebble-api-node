@@ -7,7 +7,7 @@ A Node API library for the [Pebble timeline API](https://developer.getpebble.com
 [![npm](http://img.shields.io/npm/v/pebble-api.svg)](https://www.npmjs.org/package/pebble-api)
 
 ```js
-var Timeline = require('../index');
+var Timeline = require('pebble-api');
 
 var timeline = new Timeline();
 
@@ -37,6 +37,10 @@ timeline.sendUserPin('TIMELINETEST_USER1', pin1, function (err) {
 ```
 npm install pebble-api --save
 ```
+
+### Examples
+
+We have some example apps to demonstrate different uses of the library. You can find them in the [examples folder](./examples).
 
 ### Development
 
