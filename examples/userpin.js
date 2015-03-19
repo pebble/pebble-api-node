@@ -6,9 +6,11 @@ var timeline = new Timeline();
 
 var now = new Date();
 
+var pinTime = new Date(now.getTime() + (30 * 60 * 1000));
+
 var pin1 = new Timeline.Pin({
   id: 'test-pin-5245',
-  time: now,
+  time: pinTime,
   duration: 10,
   layout: {
     type: Timeline.Pin.LayoutType.genericPin,
@@ -16,14 +18,14 @@ var pin1 = new Timeline.Pin({
     title: 'Pin Title'
   }
 }).addReminder(new Timeline.Pin.Reminder({
-  time: new Date(now.getTime() - 60 * 60000),
+  time: new Date(pinTime.getTime() - (20 * 60 * 1000)),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
     tinyIcon: Timeline.Pin.Icon.Calendar,
-    title: 'T-60 minutes'
+    title: 'T-20 minutes'
   })
 })).addReminder({
-  time: new Date(now.getTime() - 10 * 60000),
+  time: new Date(pinTime.getTime() - (10 * 60 * 1000)),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.genericReminder,
     tinyIcon: Timeline.Pin.Icon.Calendar,
@@ -40,13 +42,13 @@ var pin1 = new Timeline.Pin({
 }));
 
 // log the pin object
-// console.log(pin1);
+// console.log(JSON.stringify(pin1, null, 2));
 
 // send the pin
-timeline.sendUserPin('TIMELINETEST_USER1', pin1, function (err, body) {
+timeline.sendUserPin('TIMELINETEST_USER1', pin1, function (err) {
   if (err) {
     return console.error(err);
   }
 
-  console.log(body);
+  console.log('Pin sent successfully!');
 });
