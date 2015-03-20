@@ -11,6 +11,8 @@ var Timeline = require('pebble-api');
 
 var timeline = new Timeline();
 
+var userToken = '831ac9f096134d8f841b63bb5e80bda3';
+
 var pin = new Timeline.Pin({
   id: 'test-pin-5245',
   time: new Date(),
@@ -22,7 +24,7 @@ var pin = new Timeline.Pin({
   })
 });
 
-timeline.sendUserPin('TIMELINETEST_USER1', pin1, function (err) {
+timeline.sendUserPin(userToken, pin, function (err) {
   if (err) {
     return console.error(err);
   }
