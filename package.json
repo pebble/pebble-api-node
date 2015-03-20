@@ -16,15 +16,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pebble/pebble-api.git"
+    "url": "https://github.com/pebble/pebble-api-nope.git"
   },
   "bugs": {
-    "url": "https://github.com/pebble/pebble-api/issues"
+    "url": "https://github.com/pebble/pebble-api-node/issues"
   },
-  "homepage": "https://github.com/pebble/pebble-api",
+  "homepage": "https://github.com/pebble/pebble-api-node",
   "dependencies": {
-    "request": "~2.53.0",
-    "yargs": "3.5.4"
+    "request": "^2.53.0"
   },
   "license": "MIT",
   "devDependencies": {
