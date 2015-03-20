@@ -1,0 +1,36 @@
+{
+  "name": "pebble-api",
+  "description": "Pebble API client",
+  "version": "0.0.1",
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "test": "make test",
+    "coverage": "make test-cov"
+  },
+  "keywords": [
+    "pebble",
+    "timeline"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pebble/pebble-api-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/pebble/pebble-api-node/issues"
+  },
+  "homepage": "https://github.com/pebble/pebble-api-node",
+  "dependencies": {
+    "request": "^2.53.0"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "istanbul": "^0.3.8",
+    "jscs": "^1.11.3",
+    "jshint": "^2.6.3",
+    "mocha": "^2.2.1",
+    "nock": "^1.2.0"
+  }
+}
