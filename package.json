@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pebble/pebble-api-nope.git"
+    "url": "https://github.com/pebble/pebble-api-node.git"
   },
   "bugs": {
     "url": "https://github.com/pebble/pebble-api-node/issues"
