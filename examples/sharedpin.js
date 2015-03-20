@@ -19,31 +19,31 @@ var pin1 = new Timeline.Pin({
   time: pinTime,
   duration: 10,
   layout: {
-    type: Timeline.Pin.LayoutType.genericPin,
-    tinyIcon: Timeline.Pin.Icon.Pin,
+    type: Timeline.Pin.LayoutType.GENERIC_PIN,
+    tinyIcon: Timeline.Pin.Icon.PIN,
     title: 'Pin Title'
   }
 }).addReminder(new Timeline.Pin.Reminder({
   time: new Date(pinTime.getTime() - (20 * 60 * 1000)),
   layout: new Timeline.Pin.Layout({
-    type: Timeline.Pin.LayoutType.genericReminder,
-    tinyIcon: Timeline.Pin.Icon.Calendar,
+    type: Timeline.Pin.LayoutType.GENERIC_REMINDER,
+    tinyIcon: Timeline.Pin.Icon.CALENDAR,
     title: 'T-20 minutes'
   })
 })).addReminder(new Timeline.Pin.Reminder({
   time: new Date(pinTime.getTime() - (10 * 60 * 1000)),
   layout: new Timeline.Pin.Layout({
-    type: Timeline.Pin.LayoutType.genericReminder,
-    tinyIcon: Timeline.Pin.Icon.Calendar,
+    type: Timeline.Pin.LayoutType.GENERIC_REMINDER,
+    tinyIcon: Timeline.Pin.Icon.CALENDAR,
     title: 'T-10 minutes'
   })
 })).addAction(new Timeline.Pin.Action({
   title: 'Action1',
-  type: Timeline.Pin.ActionType.openWatchApp,
+  type: Timeline.Pin.ActionType.OPEN_WATCH_APP,
   launchCode: 518
 })).addAction(new Timeline.Pin.Action({
   title: 'Action2',
-  type: Timeline.Pin.ActionType.openWatchApp,
+  type: Timeline.Pin.ActionType.OPEN_WATCH_APP,
   launchCode: 2
 }));
 

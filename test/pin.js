@@ -10,9 +10,9 @@ describe('Pin', function () {
   'use strict';
 
   var layout = new Pin.Layout({
-    type: Pin.LayoutType.genericPin,
+    type: Pin.LayoutType.GENERIC_PIN,
     title: 'Pin Title',
-    tinyIcon: Pin.Icon.Pin
+    tinyIcon: Pin.Icon.PIN
   });
 
   it('should throw if id is not a string', function (done) {
@@ -70,12 +70,12 @@ describe('Pin', function () {
       layout: new Pin.Layout({
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.Pin
+        tinyIcon: Pin.Icon.PIN
       }),
       createMessage: new Pin.Notification({ time: new Date() }),
       updateMessage: new Pin.Notification({ time: new Date() }),
       actions: [
-        new Pin.Action({ type: Pin.ActionType.openWatchApp })
+        new Pin.Action({ type: Pin.ActionType.OPEN_WATCH_APP })
       ],
       reminders: [
         new Pin.Reminder({
@@ -83,7 +83,7 @@ describe('Pin', function () {
           layout: new Pin.Layout({
             type: 'genericReminder',
             title: 'Title',
-            tinyIcon: Pin.Icon.Pin
+            tinyIcon: Pin.Icon.PIN
           })
         })
       ],
@@ -100,7 +100,7 @@ describe('Pin', function () {
       layout: {
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.Pin
+        tinyIcon: Pin.Icon.PIN
       },
     });
     assert.ok(pin.layout instanceof Pin.Layout);
@@ -113,7 +113,7 @@ describe('Pin', function () {
       layout: new Pin.Layout({
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.Football
+        tinyIcon: Pin.Icon.FOOTBALL
       }),
       createMessage: {
         time: new Date()
@@ -129,7 +129,7 @@ describe('Pin', function () {
       layout: new Pin.Layout({
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.Sun
+        tinyIcon: Pin.Icon.SUN
       }),
       updateMessage: {
         time: new Date()
@@ -147,9 +147,9 @@ describe('Pin', function () {
       pin  = new Pin({
         time: new Date(),
         layout: new Pin.Layout({
-          type: Pin.LayoutType.genericPin,
+          type: Pin.LayoutType.GENERIC_PIN,
           title: 'Pin Title',
-          tinyIcon: Pin.Icon.Pin
+          tinyIcon: Pin.Icon.PIN
         })
       });
     });
@@ -165,7 +165,7 @@ describe('Pin', function () {
         layout: new Pin.Layout({
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.Pin
+          tinyIcon: Pin.Icon.PIN
         })
       });
       assert.equal(0, pin.reminders.length);
@@ -182,7 +182,7 @@ describe('Pin', function () {
         layout: new Pin.Layout({
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.Pin
+          tinyIcon: Pin.Icon.PIN
         })
       });
       assert.equal(1, pin.reminders.length);
@@ -200,9 +200,9 @@ describe('Pin', function () {
       pin  = new Pin({
         time: new Date(),
         layout: new Pin.Layout({
-          type: Pin.LayoutType.genericPin,
+          type: Pin.LayoutType.GENERIC_PIN,
           title: 'Pin Title',
-          tinyIcon: Pin.Icon.Pin
+          tinyIcon: Pin.Icon.PIN
         })
       });
     });
@@ -213,7 +213,7 @@ describe('Pin', function () {
     });
 
     it('should add a new action to the pin', function (done) {
-      var newAction = new Pin.Action({ type: Pin.ActionType.openWatchApp });
+      var newAction = new Pin.Action({ type: Pin.ActionType.OPEN_WATCH_APP });
       assert.equal(0, pin.actions.length);
       pin.addAction(newAction);
       assert.equal(1, pin.actions.length);
@@ -223,7 +223,7 @@ describe('Pin', function () {
 
     it('should convert an object literal to Action object', function (done) {
       assert.equal(0, pin.actions.length);
-      pin.addAction({ type: Pin.ActionType.openWatchApp });
+      pin.addAction({ type: Pin.ActionType.OPEN_WATCH_APP });
       assert.equal(1, pin.actions.length);
       assert.ok(pin.actions[0] instanceof Pin.Action);
       done();

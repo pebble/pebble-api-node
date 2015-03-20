@@ -16,8 +16,8 @@ var pin = new Timeline.Pin({
   time: new Date(),
   duration: 10,
   layout: new Timeline.Pin.Layout({
-    type: Timeline.Pin.LayoutType.genericPin,
-    tinyIcon: Timeline.Pin.Icon.Pin,
+    type: Timeline.Pin.LayoutType.GENERIC_PIN,
+    tinyIcon: Timeline.Pin.Icon.PIN,
     title: 'Pin Title'
   })
 });

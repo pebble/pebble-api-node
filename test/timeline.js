@@ -16,7 +16,7 @@ describe('Timeline', function () {
     layout: new Timeline.Pin.Layout({
       type: 'genericPin',
       title: 'Title',
-      tinyIcon: Timeline.Pin.Icon.Pin
+      tinyIcon: Timeline.Pin.Icon.PIN
     })
   };
   var fakePin = new Timeline.Pin(fakePinData);

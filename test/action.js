@@ -10,7 +10,11 @@ describe('Action', function () {
   'use strict';
 
   it('should throw an error if title is not a string', function (done) {
-    var actionData = { title: 5, type: Pin.ActionType.openWatchApp, launchCode: 0 };
+    var actionData = {
+      title: 5,
+      type: Pin.ActionType.OPEN_WATCH_APP,
+      launchCode: 0
+    };
     assert.throws(function () { new Action(actionData); });
     done();
   });
@@ -24,7 +28,7 @@ describe('Action', function () {
   it('should throw an error if launchCode is not a string', function (done) {
     var actionData = {
       title: 'Action',
-      type: Pin.ActionType.openWatchApp,
+      type: Pin.ActionType.OPEN_WATCH_APP,
       launchCode: '4'
     };
     assert.throws(function () { new Action(actionData); });
@@ -34,7 +38,7 @@ describe('Action', function () {
   it('should accept a valid action options', function (done) {
     var actionData = {
       title: 'Action',
-      type: Pin.ActionType.openWatchApp,
+      type: Pin.ActionType.OPEN_WATCH_APP,
       launchCode: 4
     };
     new Action(actionData);

@@ -11,9 +11,9 @@ describe('Notification', function () {
   'use strict';
 
   var fakeLayouData = {
-    type: Pin.LayoutType.genericPin,
+    type: Pin.LayoutType.GENERIC_PIN,
     title: 'Pin Title',
-    tinyIcon: Pin.Icon.Pin
+    tinyIcon: Pin.Icon.PIN
   };
   var fakeLayout = new Layout(fakeLayouData);
 
