@@ -1,7 +1,7 @@
 {
   "name": "pebble-api",
   "description": "Pebble API client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "engines": {
     "node": ">=0.10"
