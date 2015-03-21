@@ -1,6 +1,7 @@
 /* global describe */
 /* global it */
 /* global beforeEach */
+/* global afterEach */
 
 var nock = require('nock');
 var assert = require('assert');
@@ -23,6 +24,11 @@ describe('Timeline', function () {
 
   beforeEach(function (done) {
     timeline = new Timeline({ apiRoot: 'http://timeline_api', apiKey: 'API_KEY' });
+    done();
+  });
+
+  afterEach(function (done) {
+    nock.cleanAll();
     done();
   });
 
@@ -70,6 +76,15 @@ describe('Timeline', function () {
     });
 
     describe('errors', function () {
+
+      it('return an error if there is a network error', function (done) {
+        nock.disableNetConnect();
+
+        timeline.sendUserPin('USER_TOKEN', fakePin, function (err) {
+          assert.ok(err instanceof Error);
+          done();
+        });
+      });
 
       it('should handle a HTTP status of 400', function (done) {
         var timelineApi = nock('http://timeline_api', {
