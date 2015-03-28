@@ -95,11 +95,6 @@ describe('Timeline', function () {
       });
     });
 
-    it('should throw an an error if callback is not a function', function (done) {
-      assert.throws(function () { timeline.sendUserPin('USER_TOKEN', fakePin, 5); });
-      done();
-    });
-
     it('should send a PUT request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
         reqheaders: {
@@ -112,6 +107,35 @@ describe('Timeline', function () {
         timelineApi.done();
         done();
       });
+    });
+
+    describe('promises', function () {
+
+      it('should return a promise', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: {
+            'X-User-Token': 'USER_TOKEN'
+          }
+        }).put('/v1/user/pins/1234').reply(200);
+
+        var promise = timeline.sendUserPin('USER_TOKEN', fakePin);
+        assert.ok(promise.then);
+        promise.then(function () {
+          timelineApi.done();
+          done();
+        });
+      });
+
+      it('should return a promise when there is an error', function (done) {
+        var promise = timeline.sendUserPin(5, fakePin);
+        assert.ok(promise.then);
+        promise.then(null, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message, 'Expected userToken to be a string.');
+          done();
+        });
+      });
+
     });
 
     describe('errors', function () {
@@ -253,6 +277,36 @@ describe('Timeline', function () {
       });
     });
 
+    describe('promises', function () {
+
+      it('should return a promise', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: {
+            'X-API-Key': 'API_KEY'
+          }
+        }).put('/v1/shared/pins/1234').reply(200);
+
+        var promise = timeline.sendSharedPin(['topic1'], fakePin);
+        assert.ok(promise.then);
+        promise.then(function () {
+          timelineApi.done();
+          done();
+        });
+      });
+
+      it('should return a promise when there is an error', function (done) {
+        var badTimeline = new Timeline();
+        var promise = badTimeline.sendSharedPin([], fakePin);
+        assert.ok(promise.then);
+        promise.then(null, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message, 'API Key not set.');
+          done();
+        });
+      });
+
+    });
+
   });
 
   describe('#deleteUserPin', function() {
@@ -327,6 +381,35 @@ describe('Timeline', function () {
       });
     });
 
+    describe('promises', function () {
+
+      it('should return a promise', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+            reqheaders: {
+              'X-User-Token': 'USER_TOKEN'
+            }
+          }).post('/v1/user/subscriptions/TOPIC').reply(200);
+
+        var promise = timeline.subscribe('USER_TOKEN', 'TOPIC');
+        assert.ok(promise.then);
+        promise.then(function () {
+          timelineApi.done();
+          done();
+        });
+      });
+
+      it('should return a promise when there is an error', function (done) {
+        var promise = timeline.subscribe(5, 'topic');
+        assert.ok(promise.then);
+        promise.then(null, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message, 'Expected userToken to be a string.');
+          done();
+        });
+      });
+
+    });
+
   });
 
   describe('#unsubscribe', function () {
@@ -359,6 +442,35 @@ describe('Timeline', function () {
         timelineApi.done();
         done();
       });
+    });
+
+    describe('promises', function () {
+
+      it('should return a promise', function (done) {
+        var timelineApi = nock('http://timeline_api', {
+          reqheaders: {
+            'X-User-Token': 'USER_TOKEN'
+          }
+        }).delete('/v1/user/subscriptions/TOPIC').reply(200);
+
+        var promise = timeline.unsubscribe('USER_TOKEN', 'TOPIC');
+        assert.ok(promise.then);
+        promise.then(function () {
+          timelineApi.done();
+          done();
+        });
+      });
+
+      it('should return a promise when there is an error', function (done) {
+        var promise = timeline.unsubscribe('USER_TOKEN', 5);
+        assert.ok(promise.then);
+        promise.then(null, function (err) {
+          assert.ok(err instanceof Error);
+          assert.equal(err.message, 'Expected topic to be a string.');
+          done();
+        });
+      });
+
     });
 
   });

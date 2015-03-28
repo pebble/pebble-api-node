@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/pebble/pebble-api-node",
   "dependencies": {
+    "bluebird": "^2.9.16",
     "request": "^2.53.0"
   },
   "license": "MIT",
