@@ -35,9 +35,8 @@ describe('Notification', function () {
     done();
   });
 
-  it('should throw an error if time is not set', function (done) {
-    var notificationData = { layout: fakeLayout };
-    assert.throws(function () { new Notification(notificationData); });
+  it('should throw an error if layout is not set', function (done) {
+    assert.throws(function () { new Notification(); });
     done();
   });
 

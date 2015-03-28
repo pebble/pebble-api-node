@@ -61,6 +61,22 @@ describe('Pin', function () {
     done();
   });
 
+  it('should throw if updateMessage time is not set', function (done) {
+    var pinData = {
+      time: new Date(),
+      layout: layout,
+      updateMessage: new Pin.Notification({
+        layout: {
+          type: 'genericReminder',
+          title: 'Title',
+          tinyIcon: Pin.Icon.BULB
+        }
+      })
+    };
+    assert.throws(function () { new Pin(pinData); });
+    done();
+  });
+
   it('should set the properties passed in at construction', function (done) {
     var now = new Date();
     var pin  = new Pin({
@@ -72,8 +88,21 @@ describe('Pin', function () {
         title: 'Title',
         tinyIcon: Pin.Icon.PIN
       }),
-      createMessage: new Pin.Notification({ time: new Date() }),
-      updateMessage: new Pin.Notification({ time: new Date() }),
+      createMessage: new Pin.Notification({
+        layout: {
+          type: 'genericReminder',
+          title: 'Title',
+          tinyIcon: Pin.Icon.CALENDAR
+        }
+      }),
+      updateMessage: new Pin.Notification({
+        time: new Date(),
+        layout: {
+          type: 'genericReminder',
+          title: 'Title',
+          tinyIcon: Pin.Icon.BULB
+        }
+      }),
       actions: [
         new Pin.Action({ type: Pin.ActionType.OPEN_WATCH_APP })
       ],
@@ -116,7 +145,11 @@ describe('Pin', function () {
         tinyIcon: Pin.Icon.FOOTBALL
       }),
       createMessage: {
-        time: new Date()
+        layout: {
+          type: 'genericReminder',
+          title: 'Title',
+          tinyIcon: Pin.Icon.PIN
+        }
       },
     });
     assert.ok(pin.createMessage instanceof Pin.Notification);
@@ -132,7 +165,12 @@ describe('Pin', function () {
         tinyIcon: Pin.Icon.SUN
       }),
       updateMessage: {
-        time: new Date()
+        time: new Date(),
+        layout: {
+          type: 'genericReminder',
+          title: 'Title',
+          tinyIcon: Pin.Icon.ALARM
+        }
       },
     });
     assert.ok(pin.updateMessage instanceof Pin.Notification);
