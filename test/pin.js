@@ -61,11 +61,11 @@ describe('Pin', function () {
     done();
   });
 
-  it('should throw if updateMessage time is not set', function (done) {
+  it('should throw if updateNotification time is not set', function (done) {
     var pinData = {
       time: new Date(),
       layout: layout,
-      updateMessage: new Pin.Notification({
+      updateNotification: new Pin.Notification({
         layout: {
           type: 'genericReminder',
           title: 'Title',
@@ -88,14 +88,14 @@ describe('Pin', function () {
         title: 'Title',
         tinyIcon: Pin.Icon.PIN
       }),
-      createMessage: new Pin.Notification({
+      createNotification: new Pin.Notification({
         layout: {
           type: 'genericReminder',
           title: 'Title',
           tinyIcon: Pin.Icon.CALENDAR
         }
       }),
-      updateMessage: new Pin.Notification({
+      updateNotification: new Pin.Notification({
         time: new Date(),
         layout: {
           type: 'genericReminder',
@@ -136,7 +136,7 @@ describe('Pin', function () {
     done();
   });
 
-  it('should convert createMessage to a Notification object', function (done) {
+  it('should convert createNotification to a Notification object', function (done) {
     var pin  = new Pin({
       time: new Date(),
       layout: new Pin.Layout({
@@ -144,7 +144,7 @@ describe('Pin', function () {
         title: 'Title',
         tinyIcon: Pin.Icon.FOOTBALL
       }),
-      createMessage: {
+      createNotification: {
         layout: {
           type: 'genericReminder',
           title: 'Title',
@@ -152,11 +152,11 @@ describe('Pin', function () {
         }
       },
     });
-    assert.ok(pin.createMessage instanceof Pin.Notification);
+    assert.ok(pin.createNotification instanceof Pin.Notification);
     done();
   });
 
-  it('should convert updateMessage to a Notification object', function (done) {
+  it('should convert updateNotification to a Notification object', function (done) {
     var pin  = new Pin({
       time: new Date(),
       layout: new Pin.Layout({
@@ -164,7 +164,7 @@ describe('Pin', function () {
         title: 'Title',
         tinyIcon: Pin.Icon.SUN
       }),
-      updateMessage: {
+      updateNotification: {
         time: new Date(),
         layout: {
           type: 'genericReminder',
@@ -173,7 +173,7 @@ describe('Pin', function () {
         }
       },
     });
-    assert.ok(pin.updateMessage instanceof Pin.Notification);
+    assert.ok(pin.updateNotification instanceof Pin.Notification);
     done();
   });
 
