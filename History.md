@@ -1,3 +1,7 @@
+0.0.5 / 2015-04-03
+==================
+
+  * Rename createMessage and updateMessage to createNotification and updateNotification to match the change in the API
 
 0.0.4 / 2015-03-27
 ==================
