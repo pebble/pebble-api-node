@@ -75,6 +75,20 @@ describe('Timeline', function () {
       });
     });
 
+    it('should send a DELETE request to the timeline API', function(done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).delete('/v1/user/pins/1234').reply(200);
+
+      timeline.deleteUserPin('USER_TOKEN', fakePin, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
     describe('errors', function () {
 
       it('return an error if there is a network error', function (done) {
