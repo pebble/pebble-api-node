@@ -1,3 +1,9 @@
+0.1.0 / 2015-04-07
+==================
+
+  * Add Timeline.deleteUserPin() method and tests
+  * Check PEBBLE_TIMELINE_API_KEY env var for the API key
+
 0.0.5 / 2015-04-03
 ==================
 
