@@ -255,6 +255,46 @@ describe('Timeline', function () {
 
   });
 
+  describe('#deleteUserPin', function() {
+
+    it('should respond with an error if userToken is not a string', function (done) {
+      timeline.deleteUserPin(5, fakePin, function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message, 'Expected userToken to be a string.');
+        done();
+      });
+    });
+
+    it('should send a DELETE request to the timeline API', function(done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).delete('/v1/user/pins/1234').reply(200);
+
+      timeline.deleteUserPin('USER_TOKEN', fakePin, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+    it('should convert the pin argument to a Pin object', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).delete('/v1/user/pins/1234').reply(200);
+
+      timeline.deleteUserPin('USER_TOKEN', fakePinData, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+  });
+
   describe('#subscribe', function () {
 
     it('should respond with an error if userToken is not a string', function (done) {
