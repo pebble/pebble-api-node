@@ -7,8 +7,7 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "./node_modules/.bin/gulp",
-    "coverage": "make test-cov"
+    "test": "./node_modules/.bin/gulp"
   },
   "keywords": [
     "pebble",
