@@ -7,7 +7,7 @@
     "node": ">=0.10"
   },
   "scripts": {
-    "test": "make test",
+    "test": "./node_modules/.bin/gulp",
     "coverage": "make test-cov"
   },
   "keywords": [
@@ -27,10 +27,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "istanbul": "^0.3.8",
-    "jscs": "^1.11.3",
-    "jshint": "^2.6.3",
-    "mocha": "^2.2.1",
-    "nock": "^1.2.0"
+    "gulp": "^3.8.11",
+    "gulp-istanbul": "^0.8.1",
+    "gulp-jscs": "^1.4.0",
+    "gulp-jshint": "^1.10.0",
+    "gulp-load-plugins": "^0.9.0",
+    "gulp-mocha": "^2.0.1",
+    "nock": "^1.2.0",
+    "open": "0.0.5"
   }
 }

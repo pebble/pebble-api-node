@@ -46,11 +46,12 @@ We have some example apps to demonstrate different uses of the library. You can 
 
 ### Development
 
+We're using [Gulp](https://github.com/gulpjs/gulp) to tie our build-related tasks together. If you're hacking on the module, be sure to `npm install gulp -g` and use `gulp watch` as you work!
+
 #### Running Tests
 
-- `make test` runs tests
-- `make test-cov` runs tests + test coverage
-- `make open-cov` opens test coverage results in your browser
+- `npm test`/`gulp` runs tests + code coverage
+- `gulp open-cov` opens test coverage results in your browser
 
 ## Sponsored by
 
