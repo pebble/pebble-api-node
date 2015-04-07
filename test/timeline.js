@@ -218,6 +218,14 @@ describe('Timeline', function () {
 
   describe('#deleteUserPin', function() {
 
+    it('should respond with an error if userToken is not a string', function (done) {
+      timeline.deleteUserPin(5, fakePin, function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message, 'Expected userToken to be a string.');
+        done();
+      });
+    });
+
     it('should send a DELETE request to the timeline API', function(done) {
       var timelineApi = nock('http://timeline_api', {
         reqheaders: {
