@@ -27,12 +27,6 @@ describe('Pin', function () {
     done();
   });
 
-  it('should throw if duration is not a number', function (done) {
-    var pinData = { duration: '50', layout: layout };
-    assert.throws(function () { new Pin(pinData); });
-    done();
-  });
-
   it('should throw if reminders is not an array', function (done) {
     var pinData = { reminders: {}, layout: layout };
     assert.throws(function () { new Pin(pinData); });
@@ -117,9 +111,9 @@ describe('Pin', function () {
         })
       ],
     });
-    assert.equal(pin.time, now);
-    assert.equal(pin.duration, 1000);
-    assert.equal(pin.id, 'ABCDEF');
+    assert.equal(pin.opts.time, now);
+    assert.equal(pin.opts.duration, 1000);
+    assert.equal(pin.opts.id, 'ABCDEF');
     done();
   });
 
@@ -132,7 +126,7 @@ describe('Pin', function () {
         tinyIcon: Pin.Icon.PIN
       },
     });
-    assert.ok(pin.layout instanceof Pin.Layout);
+    assert.ok(pin.opts.layout instanceof Pin.Layout);
     done();
   });
 
@@ -152,7 +146,7 @@ describe('Pin', function () {
         }
       },
     });
-    assert.ok(pin.createNotification instanceof Pin.Notification);
+    assert.ok(pin.opts.createNotification instanceof Pin.Notification);
     done();
   });
 
@@ -173,7 +167,7 @@ describe('Pin', function () {
         }
       },
     });
-    assert.ok(pin.updateNotification instanceof Pin.Notification);
+    assert.ok(pin.opts.updateNotification instanceof Pin.Notification);
     done();
   });
 
@@ -206,15 +200,15 @@ describe('Pin', function () {
           tinyIcon: Pin.Icon.PIN
         })
       });
-      assert.equal(0, pin.reminders.length);
+      assert.equal(0, pin.opts.reminders.length);
       pin.addReminder(newReminder);
-      assert.equal(1, pin.reminders.length);
-      assert.equal(pin.reminders[0], newReminder);
+      assert.equal(1, pin.opts.reminders.length);
+      assert.equal(pin.opts.reminders[0], newReminder);
       done();
     });
 
     it('should convert an object literal to Reminder object', function (done) {
-      assert.equal(0, pin.reminders.length);
+      assert.equal(0, pin.opts.reminders.length);
       pin.addReminder({
         time: new Date(),
         layout: new Pin.Layout({
@@ -223,8 +217,8 @@ describe('Pin', function () {
           tinyIcon: Pin.Icon.PIN
         })
       });
-      assert.equal(1, pin.reminders.length);
-      assert.ok(pin.reminders[0] instanceof Pin.Reminder);
+      assert.equal(1, pin.opts.reminders.length);
+      assert.ok(pin.opts.reminders[0] instanceof Pin.Reminder);
       done();
     });
 
@@ -252,18 +246,18 @@ describe('Pin', function () {
 
     it('should add a new action to the pin', function (done) {
       var newAction = new Pin.Action({ type: Pin.ActionType.OPEN_WATCH_APP });
-      assert.equal(0, pin.actions.length);
+      assert.equal(0, pin.opts.actions.length);
       pin.addAction(newAction);
-      assert.equal(1, pin.actions.length);
-      assert.equal(pin.actions[0], newAction);
+      assert.equal(1, pin.opts.actions.length);
+      assert.equal(pin.opts.actions[0], newAction);
       done();
     });
 
     it('should convert an object literal to Action object', function (done) {
-      assert.equal(0, pin.actions.length);
+      assert.equal(0, pin.opts.actions.length);
       pin.addAction({ type: Pin.ActionType.OPEN_WATCH_APP });
-      assert.equal(1, pin.actions.length);
-      assert.ok(pin.actions[0] instanceof Pin.Action);
+      assert.equal(1, pin.opts.actions.length);
+      assert.ok(pin.opts.actions[0] instanceof Pin.Action);
       done();
     });
 

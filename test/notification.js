@@ -26,7 +26,7 @@ describe('Notification', function () {
   it('should convert the layout option to a Layout object', function (done) {
     var notificationData = { time: new Date(), layout: fakeLayouData };
     var notification = new Notification(notificationData);
-    assert.ok(notification.layout instanceof Layout);
+    assert.ok(notification.opts.layout instanceof Layout);
     done();
   });
 
