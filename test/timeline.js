@@ -32,6 +32,45 @@ describe('Timeline', function () {
     done();
   });
 
+  it('should create with no opts passed', function (done) {
+    timeline = new Timeline();
+    done();
+  });
+
+  it('should set the api key', function (done) {
+    timeline = new Timeline({ apiKey: 'TEST_KEY' });
+    assert.equal(timeline._apiKey, 'TEST_KEY');
+    done();
+  });
+
+  it('should use the api key env var as a fallback', function (done) {
+    process.env.PEBBLE_TIMELINE_API_KEY = 'TEST_KEY';
+    timeline = new Timeline();
+    assert.equal(timeline._apiKey, 'TEST_KEY');
+    delete process.env.PEBBLE_TIMELINE_API_KEY;
+    done();
+  });
+
+  it('should set the api root', function (done) {
+    timeline = new Timeline({ apiRoot: 'TEST_URL' });
+    assert.equal(timeline._apiRoot, 'TEST_URL');
+    done();
+  });
+
+  it('should use the api root env var as a fallback', function (done) {
+    process.env.PEBBLE_TIMELINE_API_ROOT = 'TEST_URL';
+    timeline = new Timeline();
+    assert.equal(timeline._apiRoot, 'TEST_URL');
+    delete process.env.PEBBLE_TIMELINE_API_ROOT;
+    done();
+  });
+
+  it('should use default api root', function (done) {
+    timeline = new Timeline();
+    assert.equal(timeline._apiRoot, 'https://timeline-api.getpebble.com');
+    done();
+  });
+
   describe('#sendUserPin', function () {
 
     it('should respond with an error if userToken is not a string', function (done) {
@@ -208,6 +247,46 @@ describe('Timeline', function () {
       }).put('/v1/shared/pins/1234').reply(200);
 
       timeline.sendSharedPin(['topic1'], fakePin, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+  });
+
+  describe('#deleteUserPin', function() {
+
+    it('should respond with an error if userToken is not a string', function (done) {
+      timeline.deleteUserPin(5, fakePin, function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message, 'Expected userToken to be a string.');
+        done();
+      });
+    });
+
+    it('should send a DELETE request to the timeline API', function(done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).delete('/v1/user/pins/1234').reply(200);
+
+      timeline.deleteUserPin('USER_TOKEN', fakePin, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+    it('should convert the pin argument to a Pin object', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).delete('/v1/user/pins/1234').reply(200);
+
+      timeline.deleteUserPin('USER_TOKEN', fakePinData, function (err) {
         assert.equal(err, null);
         timelineApi.done();
         done();
