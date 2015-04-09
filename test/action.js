@@ -25,16 +25,6 @@ describe('Action', function () {
     done();
   });
 
-  it('should throw an error if launchCode is not a string', function (done) {
-    var actionData = {
-      title: 'Action',
-      type: Pin.ActionType.OPEN_WATCH_APP,
-      launchCode: '4'
-    };
-    assert.throws(function () { new Action(actionData); });
-    done();
-  });
-
   it('should accept a valid action options', function (done) {
     var actionData = {
       title: 'Action',
