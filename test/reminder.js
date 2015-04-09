@@ -24,7 +24,7 @@ describe('Reminder', function () {
 
   it('should convert the layout option to a Layout object', function (done) {
     var reminder = new Reminder({ time: new Date(), layout: fakeLayouData });
-    assert.ok(reminder.layout instanceof Layout);
+    assert.ok(reminder.opts.layout instanceof Layout);
     done();
   });
 
