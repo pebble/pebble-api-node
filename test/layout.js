@@ -100,6 +100,102 @@ describe('Layout', function () {
     done();
   });
 
+  it('should throw if foregroundColor is not a string', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      foregroundColor: 5
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if backgroundColor is not a string', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      backgroundColor: 5
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if headings is not an array', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      headings: 5,
+      paragraphs: ['some text']
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if headings array contains non-strings', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      headings: [5],
+      paragraphs: ['some text']
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if paragraphs is not an array', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      headings: ['heading1'],
+      paragraphs: 5
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if paragraphs array contains non-strings', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      headings: ['heading1'],
+      paragraphs: [5]
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if headings is not set but paragraphs is', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      paragraphs: ['some text']
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if paragraphs is not set but headings is', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      headings: ['heading1']
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if number of paragraphs does not equal number of headings',
+      function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      headings: ['heading1', 'heading2'],
+      paragraphs: ['some text']
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if lastUpdated is not a Date object', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      lastUpdated: 5
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
   it('should throw if locationName is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.GENERIC_PIN,
@@ -232,7 +328,9 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.GENERIC_PIN,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.PIN,
+        backgroundColor: '#222222',
+        foregroundColor: '#445566'
       };
       new Layout(layoutData);
       done();
@@ -253,7 +351,11 @@ describe('Layout', function () {
     it('should create a valid genericPin Layout', function (done) {
       var layoutData = {
         type: Pin.LayoutType.CALENDAR_PIN,
-        title: 'Pin Title'
+        title: 'Pin Title',
+        headings: ['heading1', 'heading2'],
+        paragraphs: ['paragraph1', 'paragraph2'],
+        foregroundColor: '#445566',
+        backgroundColor: '#222222'
       };
       new Layout(layoutData);
       done();

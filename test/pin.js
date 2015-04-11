@@ -129,7 +129,9 @@ describe('Pin', function () {
       layout: {
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.PIN,
+        foregoundColor: '#445566',
+        backgroundColor: '#222222'
       },
     });
     assert.ok(pin.layout instanceof Pin.Layout);
