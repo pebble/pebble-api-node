@@ -1,3 +1,8 @@
+0.1.1 / 2015-04-12
+==================
+
+  * Add new layout attributes for colors, headings and paragraphs
+
 0.1.0 / 2015-04-07
 ==================
 
