@@ -419,10 +419,42 @@ describe('Timeline', function () {
         reqheaders: {
           'X-User-Token': 'USER_TOKEN'
         }
-      }).get('/v1/user/subscriptions').reply(200);
+      }).get('/v1/user/subscriptions').reply(200, []);
 
       timeline.listSubscriptions('USER_TOKEN', function (err) {
         assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+    it('should respond with an error with failed GET request', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).get('/v1/user/subscriptions').reply(410);
+
+      timeline.listSubscriptions('USER_TOKEN', function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message,
+          'The user token submitted was invalid or does not exist.');
+        timelineApi.done();
+        done();
+      });
+    });
+
+    it('should respond with an error on failed response parsing', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).get('/v1/user/subscriptions').reply(200, 'not json');
+
+      timeline.listSubscriptions('USER_TOKEN', function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message,
+          'Could not parse API response for listSubscriptions.');
         timelineApi.done();
         done();
       });
