@@ -12,7 +12,7 @@ describe('Pin', function () {
   var layout = new Pin.Layout({
     type: Pin.LayoutType.GENERIC_PIN,
     title: 'Pin Title',
-    tinyIcon: Pin.Icon.PIN
+    tinyIcon: Pin.Icon.NOTIFICATION_FLAG
   });
 
   it('should throw if id is not a string', function (done) {
@@ -69,7 +69,7 @@ describe('Pin', function () {
         layout: {
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.BULB
+          tinyIcon: Pin.Icon.NOTIFICATION_FLAG
         }
       })
     };
@@ -86,13 +86,13 @@ describe('Pin', function () {
       layout: new Pin.Layout({
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG
       }),
       createNotification: new Pin.Notification({
         layout: {
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.CALENDAR
+          tinyIcon: Pin.Icon.TIMELINE_CALENDAR
         }
       }),
       updateNotification: new Pin.Notification({
@@ -100,7 +100,7 @@ describe('Pin', function () {
         layout: {
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.BULB
+          tinyIcon: Pin.Icon.TIMELINE_SUN
         }
       }),
       actions: [
@@ -112,7 +112,7 @@ describe('Pin', function () {
           layout: new Pin.Layout({
             type: 'genericReminder',
             title: 'Title',
-            tinyIcon: Pin.Icon.PIN
+            tinyIcon: Pin.Icon.NOTIFICATION_FLAG
           })
         })
       ],
@@ -129,7 +129,7 @@ describe('Pin', function () {
       layout: {
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
         foregoundColor: '#445566',
         backgroundColor: '#222222'
       },
@@ -144,13 +144,13 @@ describe('Pin', function () {
       layout: new Pin.Layout({
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.FOOTBALL
+        tinyIcon: Pin.Icon.AMERICAN_FOOTBALL
       }),
       createNotification: {
         layout: {
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.PIN
+          tinyIcon: Pin.Icon.NOTIFICATION_FLAG
         }
       },
     });
@@ -164,14 +164,14 @@ describe('Pin', function () {
       layout: new Pin.Layout({
         type: 'genericPin',
         title: 'Title',
-        tinyIcon: Pin.Icon.SUN
+        tinyIcon: Pin.Icon.TIMELINE_SUN
       }),
       updateNotification: {
         time: new Date(),
         layout: {
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.ALARM
+          tinyIcon: Pin.Icon.ALARM_CLOCK
         }
       },
     });
@@ -189,7 +189,7 @@ describe('Pin', function () {
         layout: new Pin.Layout({
           type: Pin.LayoutType.GENERIC_PIN,
           title: 'Pin Title',
-          tinyIcon: Pin.Icon.PIN
+          tinyIcon: Pin.Icon.NOTIFICATION_FLAG
         })
       });
     });
@@ -205,7 +205,7 @@ describe('Pin', function () {
         layout: new Pin.Layout({
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.PIN
+          tinyIcon: Pin.Icon.NOTIFICATION_FLAG
         })
       });
       assert.equal(0, pin.reminders.length);
@@ -222,7 +222,7 @@ describe('Pin', function () {
         layout: new Pin.Layout({
           type: 'genericReminder',
           title: 'Title',
-          tinyIcon: Pin.Icon.PIN
+          tinyIcon: Pin.Icon.NOTIFICATION_FLAG
         })
       });
       assert.equal(1, pin.reminders.length);
@@ -242,7 +242,7 @@ describe('Pin', function () {
         layout: new Pin.Layout({
           type: Pin.LayoutType.GENERIC_PIN,
           title: 'Pin Title',
-          tinyIcon: Pin.Icon.PIN
+          tinyIcon: Pin.Icon.NOTIFICATION_FLAG
         })
       });
     });

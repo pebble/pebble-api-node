@@ -13,7 +13,7 @@ describe('Reminder', function () {
   var fakeLayouData = {
     type: Pin.LayoutType.GENERIC_PIN,
     title: 'Pin Title',
-    tinyIcon: Pin.Icon.PIN
+    tinyIcon: Pin.Icon.NOTIFICATION_FLAG
   };
   var fakeLayout = new Layout(fakeLayouData);
 

@@ -309,7 +309,7 @@ describe('Layout', function () {
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.GENERIC_PIN,
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -328,7 +328,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.GENERIC_PIN,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
         backgroundColor: '#222222',
         foregroundColor: '#445566'
       };
@@ -368,8 +368,8 @@ describe('Layout', function () {
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.SPORTS_PIN,
-        tinyIcon: Pin.Icon.PIN,
-        largeIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
+        largeIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -379,7 +379,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.SPORTS_PIN,
         title: 'Pin Title',
-        largeIcon: Pin.Icon.PIN
+        largeIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -389,7 +389,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.SPORTS_PIN,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -401,8 +401,8 @@ describe('Layout', function () {
         title: 'Bulls at Bears',
         subtitle: 'Halftime',
         body: 'Game of the Century',
-        tinyIcon: Pin.Icon.FOOTBALL,
-        largeIcon: Pin.Icon.FOOTBALL,
+        tinyIcon: Pin.Icon.AMERICAN_FOOTBALL,
+        largeIcon: Pin.Icon.AMERICAN_FOOTBALL,
         lastUpdated: new Date(),
         rankAway: '03',
         rankHome: '08',
@@ -426,8 +426,8 @@ describe('Layout', function () {
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.WEATHER_PIN,
-        tinyIcon: Pin.Icon.PIN,
-        largeIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
+        largeIcon: Pin.Icon.NOTIFICATION_FLAG,
         locationName: 'Somewhere'
       };
       assert.throws(function () { new Layout(layoutData); });
@@ -438,7 +438,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.WEATHER_PIN,
         title: 'Pin Title',
-        largeIcon: Pin.Icon.PIN,
+        largeIcon: Pin.Icon.NOTIFICATION_FLAG,
         locationName: 'Somewhere'
       };
       assert.throws(function () { new Layout(layoutData); });
@@ -449,7 +449,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.WEATHER_PIN,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
         locationName: 'Somewhere'
       };
       assert.throws(function () { new Layout(layoutData); });
@@ -460,8 +460,8 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.WEATHER_PIN,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN,
-        largeIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
+        largeIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -471,8 +471,8 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.WEATHER_PIN,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN,
-        largeIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
+        largeIcon: Pin.Icon.NOTIFICATION_FLAG,
         locationName: 'Somewhere'
       };
       new Layout(layoutData);
@@ -495,7 +495,7 @@ describe('Layout', function () {
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.GENERIC_REMINDER,
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -505,7 +505,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.GENERIC_REMINDER,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       new Layout(layoutData);
       done();
@@ -527,7 +527,7 @@ describe('Layout', function () {
     it('should throw an error if tinyIcon is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.GENERIC_NOTIFICATION,
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -537,7 +537,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.GENERIC_NOTIFICATION,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG
       };
       new Layout(layoutData);
       done();
@@ -550,7 +550,7 @@ describe('Layout', function () {
     it('should throw an error if title is not provided', function (done) {
       var layoutData = {
         type: Pin.LayoutType.COMM_NOTIFICATION,
-        tinyIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
         sender: 'Someone!'
       };
       assert.throws(function () { new Layout(layoutData); });
@@ -571,7 +571,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.COMM_NOTIFICATION,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
       };
       assert.throws(function () { new Layout(layoutData); });
       done();
@@ -581,7 +581,7 @@ describe('Layout', function () {
       var layoutData = {
         type: Pin.LayoutType.COMM_NOTIFICATION,
         title: 'Pin Title',
-        tinyIcon: Pin.Icon.PIN,
+        tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
         sender: 'Someone!'
       };
       new Layout(layoutData);
@@ -597,9 +597,9 @@ describe('Layout', function () {
       subtitle: 'Pin Subtitle',
       shortTitle: 'Pin Short Title',
       body: 'Pin Body',
-      tinyIcon: Pin.Icon.PIN,
-      smallIcon: Pin.Icon.PIN,
-      largeIcon: Pin.Icon.PIN
+      tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
+      smallIcon: Pin.Icon.NOTIFICATION_FLAG,
+      largeIcon: Pin.Icon.NOTIFICATION_FLAG
     };
     var layout = new Layout(layoutData);
     assert.deepEqual(layout, layoutData);
