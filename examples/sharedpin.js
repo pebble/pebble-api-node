@@ -20,21 +20,21 @@ var pin1 = new Timeline.Pin({
   duration: 10,
   layout: {
     type: Timeline.Pin.LayoutType.GENERIC_PIN,
-    tinyIcon: Timeline.Pin.Icon.PIN,
+    tinyIcon: Timeline.Pin.Icon.NOTIFICATION_FLAG,
     title: 'Pin Title'
   }
 }).addReminder(new Timeline.Pin.Reminder({
   time: new Date(pinTime.getTime() - (20 * 60 * 1000)),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.GENERIC_REMINDER,
-    tinyIcon: Timeline.Pin.Icon.CALENDAR,
+    tinyIcon: Timeline.Pin.Icon.TIMELINE_CALENDAR,
     title: 'T-20 minutes'
   })
 })).addReminder(new Timeline.Pin.Reminder({
   time: new Date(pinTime.getTime() - (10 * 60 * 1000)),
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.GENERIC_REMINDER,
-    tinyIcon: Timeline.Pin.Icon.CALENDAR,
+    tinyIcon: Timeline.Pin.Icon.TIMELINE_CALENDAR,
     title: 'T-10 minutes'
   })
 })).addAction(new Timeline.Pin.Action({

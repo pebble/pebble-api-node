@@ -19,7 +19,7 @@ var pin = new Timeline.Pin({
   duration: 10,
   layout: new Timeline.Pin.Layout({
     type: Timeline.Pin.LayoutType.GENERIC_PIN,
-    tinyIcon: Timeline.Pin.Icon.PIN,
+    tinyIcon: Timeline.Pin.Icon.NOTIFICATION_FLAG,
     title: 'Pin Title'
   })
 });
