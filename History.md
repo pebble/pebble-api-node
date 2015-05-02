@@ -1,3 +1,10 @@
+0.1.3 / 2015-05-02
+==================
+
+  * Add deleteSharedPin() and listSubscriptions()
+  * Move Timeline to submodule
+  * Add more icons
+
 0.1.2 / 2015-04-27
 ==================
 
