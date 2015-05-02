@@ -1,6 +1,6 @@
 'use strict';
 
-var Timeline = require('../index');
+var Timeline = require('../index').Timeline;
 
 var timeline = new Timeline();
 

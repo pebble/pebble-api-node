@@ -7,7 +7,7 @@ A Node API library for the [Pebble timeline API](https://developer.getpebble.com
 [![npm](http://img.shields.io/npm/v/pebble-api.svg)](https://www.npmjs.org/package/pebble-api)
 
 ```js
-var Timeline = require('pebble-api');
+var Timeline = require('pebble-api').Timeline;
 
 var timeline = new Timeline();
 
