@@ -295,6 +295,47 @@ describe('Timeline', function () {
 
   });
 
+  describe('#deleteSharedPin', function() {
+
+    it('should respond with an error if apiKey has not been set', function (done) {
+      var badTimeline = new Timeline();
+      badTimeline.deleteSharedPin(fakePin, function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message, 'API Key not set.');
+        done();
+      });
+    });
+
+    it('should send a DELETE request to the timeline API', function(done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-API-Key': 'API_KEY'
+        }
+      }).delete('/v1/shared/pins/1234').reply(200);
+
+      timeline.deleteSharedPin(fakePin, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+    it('should convert the pin argument to a Pin object', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-API-Key': 'API_KEY'
+        }
+      }).delete('/v1/shared/pins/1234').reply(200);
+
+      timeline.deleteSharedPin(fakePinData, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+  });
+
   describe('#subscribe', function () {
 
     it('should respond with an error if userToken is not a string', function (done) {
@@ -356,6 +397,48 @@ describe('Timeline', function () {
 
       timeline.unsubscribe('USER_TOKEN', 'TOPIC', function (err) {
         assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+  });
+
+  describe('#listSubscriptions', function () {
+
+    it('should respond with an error if userToken is not a string', function (done) {
+      timeline.listSubscriptions(5, function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message, 'Expected userToken to be a string.');
+        done();
+      });
+    });
+
+    it('should send a GET request to the timeline API', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).get('/v1/user/subscriptions').reply(200, []);
+
+      timeline.listSubscriptions('USER_TOKEN', function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+    it('should respond with an error with failed GET request', function (done) {
+      var timelineApi = nock('http://timeline_api', {
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      }).get('/v1/user/subscriptions').reply(410);
+
+      timeline.listSubscriptions('USER_TOKEN', function (err) {
+        assert.ok(err instanceof Error);
+        assert.equal(err.message,
+          'The user token submitted was invalid or does not exist.');
         timelineApi.done();
         done();
       });
