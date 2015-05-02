@@ -1,4 +1,4 @@
-0.1.3 / 2015-05-02
+0.2.0 / 2015-05-02
 ==================
 
   * Add deleteSharedPin() and listSubscriptions()
