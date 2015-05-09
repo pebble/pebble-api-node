@@ -21,6 +21,7 @@ describe('Timeline', function () {
     })
   };
   var fakePin = new Timeline.Pin(fakePinData);
+  var rgxUserAgent = /^pebble-api-node\/\d+\.\d+\.\d+;node\/.+/;
 
   beforeEach(function (done) {
     timeline = new Timeline({ apiRoot: 'http://timeline_api', apiKey: 'API_KEY' });
@@ -244,7 +245,9 @@ describe('Timeline', function () {
         reqheaders: {
           'X-API-Key': 'API_KEY'
         }
-      }).put('/v1/shared/pins/1234').reply(200);
+      })
+      .matchHeader('user-agent', rgxUserAgent)
+      .put('/v1/shared/pins/1234').reply(200);
 
       timeline.sendSharedPin(['topic1'], fakePin, function (err) {
         assert.equal(err, null);
@@ -270,7 +273,9 @@ describe('Timeline', function () {
         reqheaders: {
           'X-User-Token': 'USER_TOKEN'
         }
-      }).delete('/v1/user/pins/1234').reply(200);
+      })
+      .matchHeader('user-agent', rgxUserAgent)
+      .delete('/v1/user/pins/1234').reply(200);
 
       timeline.deleteUserPin('USER_TOKEN', fakePin, function (err) {
         assert.equal(err, null);
@@ -311,7 +316,9 @@ describe('Timeline', function () {
         reqheaders: {
           'X-API-Key': 'API_KEY'
         }
-      }).delete('/v1/shared/pins/1234').reply(200);
+      })
+      .matchHeader('user-agent', rgxUserAgent)
+      .delete('/v1/shared/pins/1234').reply(200);
 
       timeline.deleteSharedPin(fakePin, function (err) {
         assert.equal(err, null);
@@ -356,10 +363,12 @@ describe('Timeline', function () {
 
     it('should send a POST request to the timeline API', function (done) {
       var timelineApi = nock('http://timeline_api', {
-          reqheaders: {
-            'X-User-Token': 'USER_TOKEN'
-          }
-        }).post('/v1/user/subscriptions/TOPIC').reply(200);
+        reqheaders: {
+          'X-User-Token': 'USER_TOKEN'
+        }
+      })
+      .matchHeader('user-agent', rgxUserAgent)
+      .post('/v1/user/subscriptions/TOPIC').reply(200);
 
       timeline.subscribe('USER_TOKEN', 'TOPIC', function (err) {
         assert.equal(err, null);
@@ -393,7 +402,9 @@ describe('Timeline', function () {
         reqheaders: {
           'X-User-Token': 'USER_TOKEN'
         }
-      }).delete('/v1/user/subscriptions/TOPIC').reply(200);
+      })
+      .matchHeader('user-agent', rgxUserAgent)
+      .delete('/v1/user/subscriptions/TOPIC').reply(200);
 
       timeline.unsubscribe('USER_TOKEN', 'TOPIC', function (err) {
         assert.equal(err, null);
@@ -419,7 +430,9 @@ describe('Timeline', function () {
         reqheaders: {
           'X-User-Token': 'USER_TOKEN'
         }
-      }).get('/v1/user/subscriptions').reply(200, []);
+      })
+      .matchHeader('user-agent', rgxUserAgent)
+      .get('/v1/user/subscriptions').reply(200, []);
 
       timeline.listSubscriptions('USER_TOKEN', function (err) {
         assert.equal(err, null);
