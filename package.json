@@ -23,14 +23,14 @@
   },
   "homepage": "https://github.com/pebble/pebble-api-node",
   "dependencies": {
-    "request": "^2.53.0"
+    "request": "^2.55.0"
   },
   "license": "MIT",
   "devDependencies": {
-    "istanbul": "^0.3.8",
-    "jscs": "^1.11.3",
-    "jshint": "^2.6.3",
-    "mocha": "^2.2.1",
-    "nock": "^1.2.0"
+    "istanbul": "^0.3.14",
+    "jscs": "^1.13.1",
+    "jshint": "^2.7.0",
+    "mocha": "^2.2.5",
+    "nock": "^1.9.0"
   }
 }
