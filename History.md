@@ -2,6 +2,11 @@
 0.2.1 / 2015-05-11
 ==================
 
+ * Add primaryColor and secondaryColor layout attributes
+
+0.2.1 / 2015-05-11
+==================
+
  * add custom user-agent to outgoing requests
 
 0.2.0 / 2015-05-02
