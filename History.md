@@ -1,5 +1,5 @@
 
-0.2.1 / 2015-05-11
+0.2.2 / 2015-06-12
 ==================
 
  * Add primaryColor and secondaryColor layout attributes
