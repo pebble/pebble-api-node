@@ -459,4 +459,24 @@ describe('Timeline', function () {
 
   });
 
+  describe('#request', function () {
+
+    it('should handle no headers', function (done) {
+      var timelineApi = nock('http://timeline_api')
+                        .get('/v1/some/endpoint').reply(200, []);
+
+      var opts = {
+        method: 'GET',
+        endpoint: '/v1/some/endpoint'
+      };
+
+      timeline._request(opts, function (err) {
+        assert.equal(err, null);
+        timelineApi.done();
+        done();
+      });
+    });
+
+  });
+
 });

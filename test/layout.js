@@ -109,6 +109,24 @@ describe('Layout', function () {
     done();
   });
 
+  it('should throw if primaryColor is not a string', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      primaryColor: 5
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
+  it('should throw if secondaryColor is not a string', function (done) {
+    var layoutData = {
+      type: Pin.LayoutType.GENERIC_PIN,
+      secondaryColor: 5
+    };
+    assert.throws(function () { new Layout(layoutData); });
+    done();
+  });
+
   it('should throw if backgroundColor is not a string', function (done) {
     var layoutData = {
       type: Pin.LayoutType.GENERIC_PIN,
@@ -330,7 +348,8 @@ describe('Layout', function () {
         title: 'Pin Title',
         tinyIcon: Pin.Icon.NOTIFICATION_FLAG,
         backgroundColor: '#222222',
-        foregroundColor: '#445566'
+        foregroundColor: '#445566',
+        secondaryColor: '#000000',
       };
       new Layout(layoutData);
       done();
@@ -354,8 +373,9 @@ describe('Layout', function () {
         title: 'Pin Title',
         headings: ['heading1', 'heading2'],
         paragraphs: ['paragraph1', 'paragraph2'],
-        foregroundColor: '#445566',
-        backgroundColor: '#222222'
+        backgroundColor: '#222222',
+        primaryColor: '#445566',
+        secondaryColor: '#000000',
       };
       new Layout(layoutData);
       done();
